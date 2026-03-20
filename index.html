@@ -29,7 +29,7 @@
       color: var(--white);
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
-      overflow-x: hidden;
+      overflow-x: hidden; word-break: break-word; overflow-wrap: break-word;
       /* SVG noise texture baked in */
       background-image:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"),
@@ -641,7 +641,7 @@
     <p class="footer-copy">© 2024 7 Seven Marketing Agency · Magyarország</p>
     <ul class="footer-links">
       <li><a href="https://www.instagram.com/horvathharon/" target="_blank">Instagram</a></li>
-      <li><a href="https://www.facebook.com/me/" target="_blank">Facebook</a></li>
+      <li><a href="https://www.facebook.com/share/16QMQ31wXW/?mibextid=wwXIfr" target="_blank">Facebook</a></li>
       <li><a href="https://www.tiktok.com/@horvathharon" target="_blank">TikTok</a></li>
     </ul>
   </footer>
@@ -655,8 +655,35 @@
         alert('Kérlek töltsd ki a kötelező mezőket (Név, Email, Vállalkozás neve)!');
         return;
       }
-      document.getElementById('successMsg').style.display = 'block';
-      document.querySelector('.submit-btn').style.display = 'none';
+
+      var services = [];
+      document.querySelectorAll('.chk input:checked').forEach(function(el) { services.push(el.value); });
+      var message = document.getElementById('fmsg').value.trim();
+      var phone = document.getElementById('fphone').value.trim();
+
+      fetch('https://formspree.io/f/xjgazler', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nev: name,
+          email: email,
+          vallalkozas: company,
+          telefon: phone,
+          szolgaltatasok: services.join(', '),
+          uzenet: message
+        })
+      })
+      .then(function(res) {
+        if (res.ok) {
+          document.getElementById('successMsg').style.display = 'block';
+          document.querySelector('.submit-btn').style.display = 'none';
+        } else {
+          alert('Hiba történt, kérlek próbáld újra!');
+        }
+      })
+      .catch(function() {
+        alert('Hiba történt, kérlek próbáld újra!');
+      });
     }
 
     // Scroll reveal
