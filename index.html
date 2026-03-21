@@ -397,6 +397,43 @@
       .form-box { padding: 28px 20px; }
       .checks { grid-template-columns: 1fr; }
     }
+
+    /* PRIVACY MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);
+      justify-content: center; align-items: flex-start;
+      padding: 40px 20px; overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--bg2); border: 1px solid var(--border);
+      max-width: 700px; width: 100%; padding: 48px;
+      position: relative; margin: auto;
+    }
+    .modal-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; color: var(--gold);
+      font-size: 24px; cursor: pointer; line-height: 1;
+    }
+    .modal-title {
+      font-family: "Playfair Display", serif;
+      font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--white);
+    }
+    .modal-box h3 {
+      font-size: 15px; font-weight: 600; color: var(--gold);
+      margin: 24px 0 8px; letter-spacing: 0.05em;
+    }
+    .modal-box p, .modal-box li {
+      font-size: 13px; line-height: 1.8; color: var(--off); margin-bottom: 8px;
+    }
+    .modal-box ul { padding-left: 20px; margin-bottom: 8px; }
+    .privacy-link {
+      color: var(--muted); font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer; text-decoration: underline;
+      background: none; border: none; transition: color 0.25s;
+    }
+    .privacy-link:hover { color: var(--gold); }
   </style>
 </head>
 <body>
@@ -635,10 +672,57 @@
     </div>
   </section>
 
+
+  <!-- PRIVACY MODAL -->
+  <div class="modal-overlay" id="privacyModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closePrivacy()">✕</button>
+      <div class="modal-title">Adatvédelmi Tájékoztató</div>
+
+      <h3>1. Adatkezelő</h3>
+      <p>7 Seven Marketing Agency<br>
+      Székhely: Szigetszentmiklós, Magyarország<br>
+      Email: aronhorvath787@gmail.com</p>
+
+      <h3>2. Kezelt adatok és céljuk</h3>
+      <p>Az ajánlatkérő űrlap kitöltésekor az alábbi személyes adatokat kezeljük:</p>
+      <ul>
+        <li>Név — kapcsolatfelvétel céljából</li>
+        <li>Email cím — ajánlat visszaküldése céljából</li>
+        <li>Vállalkozás neve — az ajánlat személyre szabása céljából</li>
+        <li>Telefonszám (opcionális) — telefonos kapcsolatfelvétel céljából</li>
+        <li>Üzenet tartalma — az ajánlat elkészítése céljából</li>
+      </ul>
+
+      <h3>3. Az adatkezelés jogalapja</h3>
+      <p>Az adatkezelés jogalapja az érintett hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont), amelyet az űrlap beküldésével ad meg.</p>
+
+      <h3>4. Adatmegőrzési idő</h3>
+      <p>Az adatokat az ajánlatkérés teljesítéséig, illetve legfeljebb 1 évig őrizzük meg. Ezt követően az adatokat töröljük.</p>
+
+      <h3>5. Adattovábbítás</h3>
+      <p>Az adatokat harmadik félnek nem adjuk át, kivéve a Formspree Inc. adatfeldolgozót, amely az űrlap technikai működtetését végzi (formspree.io).</p>
+
+      <h3>6. Az érintett jogai</h3>
+      <p>Ön jogosult:</p>
+      <ul>
+        <li>Hozzáférni a kezelt adataihoz</li>
+        <li>Kérni az adatok helyesbítését vagy törlését</li>
+        <li>Visszavonni hozzájárulását bármikor</li>
+        <li>Panaszt benyújtani a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (naih.hu)</li>
+      </ul>
+
+      <h3>7. Kapcsolat</h3>
+      <p>Adatvédelemmel kapcsolatos kérdéseivel forduljon hozzánk: <a href="mailto:aronhorvath787@gmail.com" style="color: var(--gold);">aronhorvath787@gmail.com</a></p>
+
+      <p style="margin-top: 24px; font-size: 12px; color: var(--muted);">Utolsó frissítés: 2024. március</p>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">7<sup>SEVEN</sup> Marketing Agency</div>
-    <p class="footer-copy">© 2024 7 Seven Marketing Agency · Magyarország</p>
+    <p class="footer-copy">© 2024 7 Seven Marketing Agency · Magyarország<br><button class="privacy-link" onclick="openPrivacy()">Adatvédelmi Tájékoztató</button></p>
     <ul class="footer-links">
       <li><a href="https://www.instagram.com/horvathharon/" target="_blank">Instagram</a></li>
       <li><a href="https://www.facebook.com/share/16QMQ31wXW/?mibextid=wwXIfr" target="_blank">Facebook</a></li>
@@ -685,6 +769,10 @@
         alert('Hiba történt, kérlek próbáld újra!');
       });
     }
+
+    function openPrivacy() { document.getElementById('privacyModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closePrivacy() { document.getElementById('privacyModal').classList.remove('open'); document.body.style.overflow = ''; }
+    document.getElementById('privacyModal').addEventListener('click', function(e) { if (e.target === this) closePrivacy(); });
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
