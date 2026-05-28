@@ -2,782 +2,1290 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>7 Seven Marketing Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --bg: #1a1612;
-      --bg2: #221e19;
-      --bg3: #2a2520;
-      --gold: #d4a843;
-      --gold2: #f0c96a;
-      --gold-dim: rgba(212, 168, 67, 0.18);
-      --white: #f5f0e8;
-      --off: #c8bfb0;
-      --muted: #8a8070;
-      --border: rgba(212,168,67,0.18);
+      --cyan: #00e5ff;
+      --cyan-dim: #00b8cc;
+      --cyan-glow: rgba(0,229,255,0.18);
+      --black: #0a0a0a;
+      --dark: #111214;
+      --dark2: #181a1d;
+      --dark3: #1e2126;
+      --white: #f4f6f8;
+      --gray: #8a9099;
+      --light-gray: #c5cad3;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Manrope', sans-serif;
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--bg);
+      background: var(--black);
       color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      overflow-x: hidden; word-break: break-word; overflow-wrap: break-word;
-      /* SVG noise texture baked in */
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"),
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,168,67,0.07) 0%, transparent 60%);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
     }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: 22px 64px;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(26,22,18,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(212,168,67,0.1);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0,229,255,0.08);
     }
+
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px; font-weight: 700;
-      letter-spacing: 0.1em; color: var(--white); text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .nav-logo sup { color: var(--gold); font-size: 13px; vertical-align: super; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-logo span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
     .nav-links a {
-      font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--off); text-decoration: none; transition: color .25s;
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-btn {
-      font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--bg); background: var(--gold);
-      padding: 10px 26px; text-decoration: none; font-weight: 600;
-      transition: background .25s, transform .2s;
+    .nav-links a:hover { color: var(--cyan); }
+
+    .nav-cta {
+      background: var(--cyan);
+      color: var(--black) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      transition: background 0.2s, transform 0.15s !important;
     }
-    .nav-btn:hover { background: var(--gold2); transform: translateY(-1px); }
+    .nav-cta:hover { background: #fff !important; transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--cyan);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid rgba(0,229,255,0.1);
+      padding: 1.5rem 5vw 2rem;
+      z-index: 99;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-menu a:last-child { border-bottom: none; color: var(--cyan); font-weight: 700; }
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 120px 64px 80px;
-      position: relative; overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 130px 5vw 70px;
+      overflow: hidden;
     }
-    .hero-grid-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(212,168,67,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212,168,67,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 70% 70% at 60% 40%, black 0%, transparent 80%);
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 70% at 65% 50%, rgba(0,229,255,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 50% at 20% 80%, rgba(0,229,255,0.03) 0%, transparent 60%);
     }
-    .hero-glow {
-      position: absolute; right: -100px; top: 10%;
-      width: 700px; height: 700px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(212,168,67,0.1) 0%, transparent 70%);
+
+    /* Big "7" background number */
+    .hero-seven {
+      position: absolute;
+      right: 3vw;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(220px, 28vw, 420px);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,229,255,0.06);
+      line-height: 1;
+      user-select: none;
       pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 2; max-width: 680px; }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(212,168,67,0.12);
-      border: 1px solid rgba(212,168,67,0.3);
-      padding: 7px 18px; margin-bottom: 36px;
-      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold);
-      opacity: 0; animation: slideIn .8s ease .1s forwards;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.2);
+      color: var(--cyan);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
     }
-    .hero-badge::before { content: '◆'; font-size: 7px; }
-    .hero-h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(48px, 6.5vw, 88px);
-      font-weight: 900; line-height: 1.06;
-      margin-bottom: 24px;
-      opacity: 0; animation: slideIn .9s ease .25s forwards;
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
     }
-    .hero-h1 .accent { color: var(--gold); font-style: italic; }
-    .hero-h1 .outline {
-      -webkit-text-stroke: 2px var(--gold2);
-      color: transparent;
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.6s 0.1s ease both;
     }
+    h1 .accent { color: var(--cyan); display: block; }
+
     .hero-sub {
-      font-size: 17px; line-height: 1.75; color: var(--off);
-      max-width: 500px; margin-bottom: 48px;
-      opacity: 0; animation: slideIn .9s ease .4s forwards;
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      animation: fadeUp 0.6s 0.2s ease both;
     }
-    .hero-actions {
-      display: flex; align-items: center; gap: 28px;
-      opacity: 0; animation: slideIn .9s ease .55s forwards;
-    }
-    .btn-gold {
-      background: var(--gold); color: var(--bg);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 15px 36px; text-decoration: none;
-      transition: background .25s, transform .2s; display: inline-block;
-    }
-    .btn-gold:hover { background: var(--gold2); transform: translateY(-2px); }
-    .btn-text {
-      font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--off); text-decoration: none;
-      display: flex; align-items: center; gap: 8px;
-      transition: color .25s;
-    }
-    .btn-text:hover { color: var(--gold); }
-    .btn-text .arrow { transition: transform .25s; }
-    .btn-text:hover .arrow { transform: translateX(5px); }
 
-    .hero-numbers {
-      position: absolute; right: 64px; top: 50%; transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 40px; z-index: 2;
-      opacity: 0; animation: fadeIn 1s ease .8s forwards;
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
     }
-    .hero-stat { text-align: right; }
-    .hero-stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 44px; font-weight: 700; color: var(--gold); line-height: 1;
-    }
-    .hero-stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; margin-top: 4px; }
 
-    /* ── SECTION SHARED ── */
-    .sec-label {
-      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 14px;
-      display: flex; align-items: center; gap: 12px;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cyan);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 0 0 rgba(0,229,255,0);
     }
-    .sec-label::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-    .sec-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(34px, 4.5vw, 58px);
-      font-weight: 700; line-height: 1.1;
+    .btn-primary:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,229,255,0.25);
     }
-    .sec-title em { font-style: italic; color: var(--gold); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    /* Stats row */
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      animation: fadeUp 0.6s 0.4s ease both;
+      flex-wrap: wrap;
+    }
+    .stat { display: flex; flex-direction: column; gap: 2px; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--cyan);
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--gray); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* ── SECTION COMMON ── */
+    section { position: relative; z-index: 1; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.9rem;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: var(--white);
+    }
+    h2 em { color: var(--cyan); font-style: normal; }
 
     /* ── SERVICES ── */
-    .services {
-      padding: 120px 64px;
-      background: var(--bg2);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    #services {
+      padding: 72px 5vw;
+      background: var(--dark);
     }
-    .services-header { margin-bottom: 64px; }
+
+    .services-header {
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+    .services-header p {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-top: 1rem;
+    }
+
     .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(0,229,255,0.07);
+      border: 1px solid rgba(0,229,255,0.07);
+      border-radius: 12px;
+      overflow: hidden;
     }
-    .svc {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      padding: 44px 36px;
-      position: relative; overflow: hidden;
-      transition: border-color .3s, transform .3s;
+
+    .service-card {
+      background: var(--dark2);
+      padding: 2.2rem 2rem;
+      transition: background 0.2s;
+      cursor: default;
     }
-    .svc:hover { border-color: rgba(212,168,67,0.5); transform: translateY(-4px); }
-    .svc-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 64px; font-weight: 900;
-      color: rgba(212,168,67,0.08);
-      position: absolute; top: 16px; right: 24px; line-height: 1;
+    .service-card:hover { background: var(--dark3); }
+
+    .service-icon {
+      width: 44px; height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,229,255,0.1);
+      border-radius: 10px;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
     }
-    .svc-icon { font-size: 32px; margin-bottom: 22px; display: block; }
-    .svc-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px; font-weight: 700; margin-bottom: 14px;
+
+    .service-card h3 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
     }
-    .svc-desc { font-size: 14px; line-height: 1.75; color: var(--off); }
-    .svc-tag {
-      display: inline-block; margin-top: 22px;
-      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--gold); border-bottom: 1px solid rgba(212,168,67,0.4);
-      padding-bottom: 2px;
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--cyan-dim);
+      text-transform: uppercase;
+      background: rgba(0,229,255,0.06);
+      padding: 0.3rem 0.7rem;
+      border-radius: 3px;
     }
 
     /* ── WHY ── */
-    .why { padding: 120px 64px; position: relative; overflow: hidden; }
-    .why-glow {
-      position: absolute; left: -200px; top: 0;
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(212,168,67,0.07) 0%, transparent 70%);
-      pointer-events: none;
+    #why {
+      padding: 72px 5vw;
+      background: var(--black);
     }
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .why-desc { font-size: 16px; line-height: 1.8; color: var(--off); margin: 24px 0 40px; }
-    .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    .stat-box {
-      background: var(--bg2); border: 1px solid var(--border);
-      padding: 24px 28px;
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
     }
-    .stat-n {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px; font-weight: 700; color: var(--gold); line-height: 1;
+
+    .why-left h2 { margin-bottom: 1.2rem; }
+    .why-left p {
+      color: var(--gray);
+      line-height: 1.75;
+      font-size: 1rem;
+      margin-bottom: 2rem;
     }
-    .stat-l { font-size: 13px; color: var(--muted); margin-top: 6px; }
-    .why-list { display: flex; flex-direction: column; gap: 3px; }
-    .why-item {
-      display: flex; gap: 20px; align-items: flex-start;
-      background: var(--bg2); border: 1px solid var(--border);
-      padding: 26px 28px;
-      transition: background .3s, border-color .3s;
+
+    .why-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
     }
-    .why-item:hover { background: var(--bg3); border-color: rgba(212,168,67,0.35); }
-    .why-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
-    .why-item-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-    .why-item-text { font-size: 13px; line-height: 1.7; color: var(--off); }
+    .pill {
+      background: rgba(0,229,255,0.07);
+      border: 1px solid rgba(0,229,255,0.15);
+      color: var(--light-gray);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+    }
+
+    .why-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .why-card {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .why-card:hover { border-color: rgba(0,229,255,0.2); transform: translateY(-3px); }
+    .why-card-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+    .why-card h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .why-card p { font-size: 0.8rem; color: var(--gray); line-height: 1.6; }
 
     /* ── PROCESS ── */
-    .process {
-      padding: 120px 64px;
-      background: var(--bg2);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    #process {
+      padding: 72px 5vw;
+      background: var(--dark);
     }
-    .process-header { margin-bottom: 64px; }
-    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
-    .proc-step {
-      background: var(--bg3); padding: 40px 32px;
-      border-top: 2px solid transparent;
-      transition: border-color .3s;
-    }
-    .proc-step:hover { border-color: var(--gold); }
-    .proc-n {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px; font-weight: 900; color: var(--gold);
-      opacity: 0.35; line-height: 1; margin-bottom: 20px;
-    }
-    .proc-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; }
-    .proc-text { font-size: 13px; line-height: 1.75; color: var(--off); }
 
-    /* ── CTA ── */
-    .cta-band {
-      padding: 100px 64px; text-align: center;
-      background:
-        linear-gradient(135deg, rgba(212,168,67,0.12) 0%, transparent 50%, rgba(212,168,67,0.06) 100%),
-        var(--bg3);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      position: relative; overflow: hidden;
+    .process-header { text-align: center; max-width: 540px; margin: 0 auto 3.5rem; }
+    .process-header p { color: var(--gray); margin-top: 1rem; line-height: 1.7; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
     }
-    .cta-band::before {
-      content: '7';
-      font-family: 'Playfair Display', serif;
-      font-size: 400px; font-weight: 900;
-      color: rgba(212,168,67,0.04);
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      pointer-events: none; line-height: 1;
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.25;
     }
-    .cta-band .sec-label { justify-content: center; }
-    .cta-band .sec-label::before { display: none; }
-    .cta-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(40px, 6vw, 76px); font-weight: 900; line-height: 1.08;
-      margin: 16px 0 24px; position: relative;
+
+    .process-step { text-align: center; padding: 0 1rem; }
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--dark2);
+      border: 2px solid rgba(0,229,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--cyan);
+      margin: 0 auto 1.5rem;
     }
-    .cta-title em { font-style: italic; color: var(--gold); }
-    .cta-sub { font-size: 17px; color: var(--off); margin-bottom: 44px; position: relative; }
-    .cta-btns { display: flex; gap: 16px; justify-content: center; position: relative; }
-    .btn-outline {
-      font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--white); border: 1px solid rgba(255,255,255,0.2);
-      padding: 15px 36px; text-decoration: none;
-      transition: border-color .25s, color .25s;
+    .process-step h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.6rem;
     }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .process-step p { font-size: 0.82rem; color: var(--gray); line-height: 1.65; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      padding: 64px 5vw;
+      background: var(--black);
+      text-align: center;
+    }
+    .cta-banner h2 { margin-bottom: 1rem; }
+    .cta-banner p { color: var(--gray); margin-bottom: 2rem; font-size: 1.05rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7; }
 
     /* ── QUOTE FORM ── */
-    .quote {
-      padding: 120px 64px;
-      background: var(--bg);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    #ajanlat {
+      padding: 72px 5vw;
+      background: var(--dark);
     }
-    .quote-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
-    .quote-desc { font-size: 15px; line-height: 1.8; color: var(--off); margin: 20px 0 36px; }
-    .quote-contacts { display: flex; flex-direction: column; gap: 14px; }
-    .qc { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--off); }
-    .qc-icon { font-size: 16px; }
 
-    .form-box {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      padding: 48px;
+    .form-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
     }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .fg { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-    .fl {
-      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); font-weight: 500;
+
+    .form-header { text-align: center; margin-bottom: 3rem; }
+    .form-header p { color: var(--gray); margin-top: 1rem; line-height: 1.7; font-size: 1rem; }
+
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
     }
-    .fi {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px;
-      padding: 13px 16px; outline: none; width: 100%;
-      transition: border-color .25s, background .25s;
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray);
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: color 0.2s;
     }
-    .fi::placeholder { color: var(--muted); }
-    .fi:focus { border-color: rgba(212,168,67,0.5); background: rgba(212,168,67,0.04); }
-    textarea.fi { min-height: 100px; resize: vertical; }
-    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .chk {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 14px; color: var(--off); cursor: pointer;
-      transition: color .2s;
+    .contact-item:hover { color: var(--cyan); }
+    .contact-item span:first-child { color: var(--cyan); }
+
+    .form-card {
+      background: var(--dark2);
+      border: 1px solid rgba(0,229,255,0.1);
+      border-radius: 14px;
+      padding: 2.5rem 2.5rem;
     }
-    .chk:hover { color: var(--white); }
-    .chk input { accent-color: var(--gold); width: 15px; height: 15px; cursor: pointer; }
-    .submit-btn {
-      width: 100%; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; margin-top: 6px;
-      background: var(--gold); color: var(--bg);
-      font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 16px; transition: background .25s;
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
-    .submit-btn:hover { background: var(--gold2); }
-    .success-msg {
-      display: none; margin-top: 16px; padding: 16px;
-      background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.3);
-      color: var(--gold); font-size: 14px; text-align: center;
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light-gray);
+    }
+
+    input, textarea, select {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 7px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: rgba(0,229,255,0.4);
+      box-shadow: 0 0 0 3px rgba(0,229,255,0.07);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    select option { background: var(--dark3); }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      padding: 0.6rem 0.9rem;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 7px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .checkbox-label:hover { border-color: rgba(0,229,255,0.25); color: var(--white); }
+    .checkbox-label input { width: auto; accent-color: var(--cyan); }
+
+    .form-submit { margin-top: 1.5rem; width: 100%; justify-content: center; font-size: 1rem; padding: 1.1rem; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 1.1rem;
     }
 
     /* ── FOOTER ── */
     footer {
-      padding: 48px 64px;
-      border-top: 1px solid rgba(212,168,67,0.12);
-      display: flex; justify-content: space-between; align-items: center;
-      background: var(--bg);
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 5vw;
     }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px; font-weight: 700; letter-spacing: 0.1em;
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
-    .footer-logo sup { color: var(--gold); }
-    .footer-copy { font-size: 12px; color: var(--muted); }
-    .footer-links { display: flex; gap: 28px; list-style: none; }
-    .footer-links a {
-      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none; transition: color .25s;
-    }
-    .footer-links a:hover { color: var(--gold); }
+    .footer-brand .nav-logo { font-size: 1.4rem; margin-bottom: 0.6rem; display: inline-flex; }
+    .footer-brand p { color: var(--gray); font-size: 0.83rem; line-height: 1.6; max-width: 260px; }
 
-    /* ── ANIMATIONS ── */
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-    .reveal { opacity: 1; transform: translateY(0); transition: opacity .7s ease, transform .7s ease; }
-    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; }
-    .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; }
+    .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cyan); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      nav { padding: 14px 20px; }
-      .nav-links { display: none; }
-      .nav-logo { font-size: 16px; }
-      .nav-btn { font-size: 11px; padding: 8px 16px; white-space: nowrap; }
-      .hero { padding: 90px 24px 60px; }
-      .hero-numbers { display: none; }
-      .hero-badge { font-size: 10px; letter-spacing: 0.15em; padding: 6px 14px; margin-bottom: 24px; }
-      .hero-h1 { font-size: 42px; margin-bottom: 16px; }
-      .hero-sub { font-size: 15px; margin-bottom: 36px; }
-      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .btn-gold { padding: 14px 28px; font-size: 12px; }
-      .services, .why, .process, .quote { padding: 60px 24px; }
-      .services-grid, .why-grid, .process-grid, .quote-grid { grid-template-columns: 1fr; gap: 20px; }
-      .cta-band { padding: 60px 24px; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      footer { flex-direction: column; gap: 20px; padding: 36px 24px; text-align: center; }
-      .form-row { grid-template-columns: 1fr; }
-      .form-box { padding: 28px 20px; }
-      .checks { grid-template-columns: 1fr; }
+    .footer-socials { display: flex; gap: 1rem; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: border-color 0.2s, color 0.2s;
     }
+    .social-link:hover { border-color: var(--cyan); color: var(--cyan); }
 
-    /* PRIVACY MODAL */
+    .footer-bottom {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+    .footer-bottom a { color: var(--gray); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--cyan); }
+
+    /* ── MODAL ── */
     .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);
-      justify-content: center; align-items: flex-start;
-      padding: 40px 20px; overflow-y: auto;
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
     }
     .modal-overlay.open { display: flex; }
-    .modal-box {
-      background: var(--bg2); border: 1px solid var(--border);
-      max-width: 700px; width: 100%; padding: 48px;
-      position: relative; margin: auto;
+    .modal {
+      background: var(--dark2);
+      border: 1px solid rgba(0,229,255,0.15);
+      border-radius: 14px;
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
     }
+    .modal h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .modal p { color: var(--gray); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem; }
+    .modal h4 { color: var(--white); font-size: 0.95rem; margin: 1.2rem 0 0.4rem; }
+    .modal ul { color: var(--gray); font-size: 0.88rem; line-height: 1.8; padding-left: 1.2rem; }
     .modal-close {
-      position: absolute; top: 20px; right: 24px;
-      background: none; border: none; color: var(--gold);
-      font-size: 24px; cursor: pointer; line-height: 1;
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.2s;
     }
-    .modal-title {
-      font-family: "Playfair Display", serif;
-      font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--white);
+    .modal-close:hover { color: var(--cyan); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .modal-box h3 {
-      font-size: 15px; font-weight: 600; color: var(--gold);
-      margin: 24px 0 8px; letter-spacing: 0.05em;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
     }
-    .modal-box p, .modal-box li {
-      font-size: 13px; line-height: 1.8; color: var(--off); margin-bottom: 8px;
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .why-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .why-right { grid-template-columns: 1fr 1fr; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps::before { display: none; }
+
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
     }
-    .modal-box ul { padding-left: 20px; margin-bottom: 8px; }
-    .privacy-link {
-      color: var(--muted); font-size: 12px; letter-spacing: 0.1em;
-      text-transform: uppercase; cursor: pointer; text-decoration: underline;
-      background: none; border: none; transition: color 0.25s;
+
+    @media (max-width: 600px) {
+      h1 { font-size: clamp(2.8rem, 12vw, 4rem); }
+      .hero { padding: 100px 4vw 50px; }
+      .hero-seven { display: none; }
+      .hero-stats { gap: 1.5rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .why-right { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+
+      .form-card { padding: 1.5rem 1.2rem; }
+      .footer-inner { flex-direction: column; }
+      .footer-inner > * { width: 100%; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .contact-row { flex-direction: column; align-items: center; gap: 0.8rem; }
+
+      nav { padding: 0 4vw; }
+      .nav-logo { font-size: 1.1rem; }
     }
-    .privacy-link:hover { color: var(--gold); }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">7<sup>SEVEN</sup> Marketing</a>
-    <ul class="nav-links">
-      <li><a href="#services">Szolgáltatások</a></li>
-      <li><a href="#why">Rólunk</a></li>
-      <li><a href="#process">Folyamat</a></li>
-      <li><a href="#ajanlat">Ajánlat</a></li>
-    </ul>
-    <a href="#ajanlat" class="nav-btn">Ajánlatot kérek</a>
-  </nav>
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#"><span>7</span> Seven Marketing Agency</a>
+  <ul class="nav-links">
+    <li><a href="#services">Szolgáltatások</a></li>
+    <li><a href="#why">Rólunk</a></li>
+    <li><a href="#process">Folyamat</a></li>
+    <li><a href="#ajanlat" class="nav-cta">Ajánlatot kérek</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <div class="hero-badge">Marketing Ügynökség · Magyarország</div>
-      <h1 class="hero-h1">
-        Tartalom, ami<br>
-        <span class="accent">valóban</span> eladja<br>
-        <span class="outline">a márkádat.</span>
-      </h1>
-      <p class="hero-sub">
-        Videók, fotók és social media kezelés KKV-knak. Nem sablonok — egyedi tartalom, ami megkülönböztet a versenytársaktól.
-      </p>
-      <div class="hero-actions">
-        <a href="#ajanlat" class="btn-gold">Ingyenes konzultáció</a>
-        <a href="#services" class="btn-text">Szolgáltatásaink <span class="arrow">→</span></a>
-      </div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Szolgáltatások</a>
+  <a href="#why" onclick="closeMenu()">Rólunk</a>
+  <a href="#process" onclick="closeMenu()">Folyamat</a>
+  <a href="#ajanlat" onclick="closeMenu()">Ajánlatot kérek →</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-seven">7</div>
+  <div class="hero-content">
+    <div class="hero-badge">Marketing Ügynökség · Magyarország</div>
+    <h1>
+      Tartalom,<br>
+      <span class="accent">ami elad.</span>
+    </h1>
+    <p class="hero-sub">
+      Videók, fotók és teljes körű social media menedzsment KKV-knak. Egyedi stratégia, személyes figyelem — nem sablonok, hanem valódi eredmények.
+    </p>
+    <div class="hero-ctas">
+      <a href="#ajanlat" class="btn-primary">Ingyenes konzultáció →</a>
+      <a href="#services" class="btn-outline">Szolgáltatásaink</a>
     </div>
-    <div class="hero-numbers">
-      <div class="hero-stat">
-        <div class="hero-stat-num">100%</div>
-        <div class="hero-stat-label">Egyedi tartalom</div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Egyedi tartalom</span>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">KKV</div>
-        <div class="hero-stat-label">Fókusz</div>
+      <div class="stat">
+        <span class="stat-num">24h</span>
+        <span class="stat-label">Visszajelzés</span>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">24h</div>
-        <div class="hero-stat-label">Visszajelzés</div>
+      <div class="stat">
+        <span class="stat-num">KKV</span>
+        <span class="stat-label">Fókusz</span>
       </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="services-header reveal">
-      <div class="sec-label">Amit kínálunk</div>
-      <h2 class="sec-title">Szolgáltatásaink</h2>
-    </div>
-    <div class="services-grid">
-      <div class="svc reveal d1">
-        <div class="svc-num">01</div>
-        <span class="svc-icon">🎬</span>
-        <h3 class="svc-title">Videógyártás</h3>
-        <p class="svc-desc">Reklámvideók, reels, termékbemutatók és brand filmek, amelyek megállítják a görgetést és vásárlásra ösztönöznek.</p>
-        <span class="svc-tag">Reels · TikTok · Reklám</span>
+      <div class="stat">
+        <span class="stat-num">🇭🇺</span>
+        <span class="stat-label">Magyar piac</span>
       </div>
-      <div class="svc reveal d2">
-        <div class="svc-num">02</div>
-        <span class="svc-icon">📸</span>
-        <h3 class="svc-title">Fotózás</h3>
-        <p class="svc-desc">Termékfotók, lifestyle képek és brand fotográfia — minden kép a márkád vizuális identitását erősíti.</p>
-        <span class="svc-tag">Termék · Lifestyle · Brand</span>
-      </div>
-      <div class="svc reveal d3">
-        <div class="svc-num">03</div>
-        <span class="svc-icon">📱</span>
-        <h3 class="svc-title">Social Media Kezelés</h3>
-        <p class="svc-desc">Instagram, Facebook és TikTok oldalak teljes körű kezelése — stratégiától a posztolásig, minden egy kézből.</p>
-        <span class="svc-tag">Instagram · Facebook · TikTok</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY -->
-  <section class="why" id="why">
-    <div class="why-glow"></div>
-    <div class="why-grid">
-      <div class="reveal">
-        <div class="sec-label">Miért mi?</div>
-        <h2 class="sec-title">Nem egy <em>névtelen</em> ügynökség.</h2>
-        <p class="why-desc">Fiatalok vagyunk, lokálisak, és pontosan értjük, hogyan működik a mai közösségi média. Nincs felesleges bürokrácia — gyors kommunikáció, személyes figyelem, valódi eredmények.</p>
-        <div class="why-stats">
-          <div class="stat-box">
-            <div class="stat-n">100%</div>
-            <div class="stat-l">Egyedi tartalom, soha nem sablon</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-n">24h</div>
-            <div class="stat-l">Visszajelzés garantálva</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-n">KKV</div>
-            <div class="stat-l">Fókusz kis- és középvállalkozásokra</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-n">🇭🇺</div>
-            <div class="stat-l">Magyar piac, helyi ismeret</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-list reveal d2">
-        <div class="why-item">
-          <span class="why-icon">⚡</span>
-          <div>
-            <div class="why-item-title">Gyors átfutás</div>
-            <p class="why-item-text">Nincs hetekig tartó várakozás. Rugalmasan és gyorsan szállítunk, hogy a márkád mindig aktuális maradjon.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-icon">🎯</span>
-          <div>
-            <div class="why-item-title">Célközönség-fókusz</div>
-            <p class="why-item-text">Minden tartalmat az adott célközönségre szabunk — nem általánosítunk, hanem pontosan kommunikálunk.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-icon">💬</span>
-          <div>
-            <div class="why-item-title">Transzparens együttműködés</div>
-            <p class="why-item-text">Mindig tudod, min dolgozunk. Rendszeres visszajelzés, egyértelmű kommunikáció, nincsenek meglepetések.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-icon">📈</span>
-          <div>
-            <div class="why-item-title">Eredményorientált</div>
-            <p class="why-item-text">Nem csak szép képeket csinálunk — olyan tartalmat alkotunk, ami elérést, követőket és vásárlókat hoz.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="process" id="process">
-    <div class="process-header reveal">
-      <div class="sec-label">Hogyan dolgozunk</div>
-      <h2 class="sec-title">A folyamatunk</h2>
-    </div>
-    <div class="process-grid">
-      <div class="proc-step reveal d1">
-        <div class="proc-n">01</div>
-        <h3 class="proc-title">Ingyenes konzultáció</h3>
-        <p class="proc-text">Megismerjük a vállalkozásodat, céljaidat és célközönségedet. Nulla kötelezettség, csak egy őszinte beszélgetés.</p>
-      </div>
-      <div class="proc-step reveal d2">
-        <div class="proc-n">02</div>
-        <h3 class="proc-title">Stratégia & tervezés</h3>
-        <p class="proc-text">Kidolgozzuk a tartalomstratégiát és az ütemtervet, ami a márkádhoz és a piachoz illeszkedik.</p>
-      </div>
-      <div class="proc-step reveal d3">
-        <div class="proc-n">03</div>
-        <h3 class="proc-title">Alkotás & gyártás</h3>
-        <p class="proc-text">Elkészítjük a videókat, fotókat és egyéb tartalmakat — profi minőségben, határidőre.</p>
-      </div>
-      <div class="proc-step reveal d4">
-        <div class="proc-n">04</div>
-        <h3 class="proc-title">Publikálás & elemzés</h3>
-        <p class="proc-text">Közzétesszük a tartalmakat és nyomon követjük az eredményeket, hogy folyamatosan fejlődjünk.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BAND -->
-  <section class="cta-band">
-    <div class="sec-label reveal">Kezdjük el együtt</div>
-    <h2 class="cta-title reveal">Készen állsz, hogy<br><em>kitűnj</em> a tömegből?</h2>
-    <p class="cta-sub reveal">Az első konzultáció ingyenes és kötelezettségmentes.</p>
-    <div class="cta-btns reveal">
-      <a href="#ajanlat" class="btn-gold">Ajánlatot kérek</a>
-      <a href="mailto:aronhorvath787@gmail.com" class="btn-outline">Írj emailt</a>
-    </div>
-  </section>
-
-  <!-- QUOTE FORM -->
-  <section class="quote" id="ajanlat">
-    <div class="quote-grid">
-      <div class="reveal">
-        <div class="sec-label">Gyors & ingyenes</div>
-        <h2 class="sec-title">Kérj <em>ajánlatot</em></h2>
-        <p class="quote-desc">Töltsd ki az űrlapot, és 24 órán belül visszajelzünk egy személyre szabott ajánlattal. Semmilyen kötelezettség.</p>
-        <div class="quote-contacts">
-          <div class="qc"><span class="qc-icon">📧</span><span>aronhorvath787@gmail.com</span></div>
-          <div class="qc"><span class="qc-icon">📞</span><span>Hamarosan</span></div>
-          <div class="qc"><span class="qc-icon">📍</span><span>Magyarország</span></div>
-        </div>
-      </div>
-      <div class="reveal d2">
-        <div class="form-box">
-          <div class="form-row">
-            <div class="fg">
-              <label class="fl">Neved *</label>
-              <input type="text" class="fi" id="fname" placeholder="Kovács János" />
-            </div>
-            <div class="fg">
-              <label class="fl">Vállalkozás neve *</label>
-              <input type="text" class="fi" id="fcompany" placeholder="Pl. Kovács Kft." />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="fg">
-              <label class="fl">Email *</label>
-              <input type="email" class="fi" id="femail" placeholder="email@cegnev.hu" />
-            </div>
-            <div class="fg">
-              <label class="fl">Telefonszám</label>
-              <input type="tel" class="fi" id="fphone" placeholder="+36 70 123 4567" />
-            </div>
-          </div>
-          <div class="fg">
-            <label class="fl">Milyen szolgáltatás érdekel? *</label>
-            <div class="checks">
-              <label class="chk"><input type="checkbox" value="video" /><span>Videógyártás</span></label>
-              <label class="chk"><input type="checkbox" value="foto" /><span>Fotózás</span></label>
-              <label class="chk"><input type="checkbox" value="social" /><span>Social Media Kezelés</span></label>
-              <label class="chk"><input type="checkbox" value="komplex" /><span>Komplex csomag</span></label>
-            </div>
-          </div>
-          <div class="fg">
-            <label class="fl">Mesélj a vállalkozásodról</label>
-            <textarea class="fi" id="fmsg" placeholder="Mivel foglalkozol, mi a célod, van-e már közösségi média jelenléted?"></textarea>
-          </div>
-          <button class="submit-btn" onclick="submitQuote()">Ajánlatot kérek →</button>
-          <div class="success-msg" id="successMsg">✓ Köszönjük! 24 órán belül jelentkezünk.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- PRIVACY MODAL -->
-  <div class="modal-overlay" id="privacyModal">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closePrivacy()">✕</button>
-      <div class="modal-title">Adatvédelmi Tájékoztató</div>
-
-      <h3>1. Adatkezelő</h3>
-      <p>7 Seven Marketing Agency<br>
-      Székhely: Szigetszentmiklós, Magyarország<br>
-      Email: aronhorvath787@gmail.com</p>
-
-      <h3>2. Kezelt adatok és céljuk</h3>
-      <p>Az ajánlatkérő űrlap kitöltésekor az alábbi személyes adatokat kezeljük:</p>
-      <ul>
-        <li>Név — kapcsolatfelvétel céljából</li>
-        <li>Email cím — ajánlat visszaküldése céljából</li>
-        <li>Vállalkozás neve — az ajánlat személyre szabása céljából</li>
-        <li>Telefonszám (opcionális) — telefonos kapcsolatfelvétel céljából</li>
-        <li>Üzenet tartalma — az ajánlat elkészítése céljából</li>
-      </ul>
-
-      <h3>3. Az adatkezelés jogalapja</h3>
-      <p>Az adatkezelés jogalapja az érintett hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont), amelyet az űrlap beküldésével ad meg.</p>
-
-      <h3>4. Adatmegőrzési idő</h3>
-      <p>Az adatokat az ajánlatkérés teljesítéséig, illetve legfeljebb 1 évig őrizzük meg. Ezt követően az adatokat töröljük.</p>
-
-      <h3>5. Adattovábbítás</h3>
-      <p>Az adatokat harmadik félnek nem adjuk át, kivéve a Formspree Inc. adatfeldolgozót, amely az űrlap technikai működtetését végzi (formspree.io).</p>
-
-      <h3>6. Az érintett jogai</h3>
-      <p>Ön jogosult:</p>
-      <ul>
-        <li>Hozzáférni a kezelt adataihoz</li>
-        <li>Kérni az adatok helyesbítését vagy törlését</li>
-        <li>Visszavonni hozzájárulását bármikor</li>
-        <li>Panaszt benyújtani a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (naih.hu)</li>
-      </ul>
-
-      <h3>7. Kapcsolat</h3>
-      <p>Adatvédelemmel kapcsolatos kérdéseivel forduljon hozzánk: <a href="mailto:aronhorvath787@gmail.com" style="color: var(--gold);">aronhorvath787@gmail.com</a></p>
-
-      <p style="margin-top: 24px; font-size: 12px; color: var(--muted);">Utolsó frissítés: 2024. március</p>
     </div>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">7<sup>SEVEN</sup> Marketing Agency</div>
-    <p class="footer-copy">© 2024 7 Seven Marketing Agency · Magyarország<br><button class="privacy-link" onclick="openPrivacy()">Adatvédelmi Tájékoztató</button></p>
-    <ul class="footer-links">
-      <li><a href="https://www.instagram.com/horvathharon/" target="_blank">Instagram</a></li>
-      <li><a href="https://www.facebook.com/share/16QMQ31wXW/?mibextid=wwXIfr" target="_blank">Facebook</a></li>
-      <li><a href="https://www.tiktok.com/@horvathharon" target="_blank">TikTok</a></li>
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-label">Amit kínálunk</div>
+    <h2>Teljes körű<br><em>tartalom-gyártás</em></h2>
+    <p>Mindent egy kézből — a helyszíni forgatástól az elemzésig. Nem kell több szolgáltatóval egyeztetni.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">📍</div>
+      <h3>Helyszíni forgatás</h3>
+      <p>Profi helyszíni fotó- és videófelvételek készítése — legyen szó üzletről, termékről vagy eseményről.</p>
+      <span class="service-tag">Fotó · Videó · Helyszín</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Oldalkezelés</h3>
+      <p>Instagram, Facebook és TikTok oldalak teljes körű kezelése — posztolástól a kommentek megválaszolásáig.</p>
+      <span class="service-tag">Instagram · Facebook · TikTok</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Személyre szabott stratégia</h3>
+      <p>Az adott vállalkozásodra és célközönségedre szabott tartalomstratégia, amely valóban működik.</p>
+      <span class="service-tag">Stratégia · Célközönség · Brand</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Analitika</h3>
+      <p>Rendszeres riportok, elérés- és engagement-elemzések — hogy mindig tudd, mi működik.</p>
+      <span class="service-tag">Riport · KPI · Optimalizálás</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🎬</div>
+      <h3>Videó brainstorming</h3>
+      <p>Kreatív videóötletek kidolgozása a márkádhoz — reels, TikTok, reklám- és brand filmek.</p>
+      <span class="service-tag">Reels · TikTok · Reklám</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">✍️</div>
+      <h3>Szöveg- és forgatókönyvírás</h3>
+      <p>Figyelemfelkeltő caption-ok, szövegek és videó-szkriptek, amelyek megszólítják a célközönségedet.</p>
+      <span class="service-tag">Caption · Script · Copywriting</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🎞️</div>
+      <h3>Shot list összeállítása</h3>
+      <p>Részletes képlista és forgatási terv készítése, hogy minden forgatás gördülékenyen menjen.</p>
+      <span class="service-tag">Tervezés · Forgatás · Szervezés</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📅</div>
+      <h3>Poszt-naptár</h3>
+      <p>Hónapokra előre tervezett posztolási ütemterv — sosem marad le egyetlen fontos dátumról sem.</p>
+      <span class="service-tag">Ütemterv · Tervezés · Konzisztencia</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Post-produkció & vágás</h3>
+      <p>Professzionális videóvágás, színkorrekció, zenei aláfestés és grafikai elemek — kész, közzétehető tartalom.</p>
+      <span class="service-tag">Vágás · Színkorrekció · Effektek</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── WHY ── -->
+<section id="why">
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="section-label">Miért mi?</div>
+      <h2>Nálunk nem<br>leszel csak<br><em>egy a sok közül.</em></h2>
+      <p>
+        Őszintén szólva: frissek vagyunk a piacon, és ezt előnynek tartjuk, nem hátránynak. Mivel még kevés ügyfelünk van, minden egyes partnerre úgy figyelünk, mintha az egyetlen lenne. Nincsenek sablonok, nincsenek copy-paste megoldások — megismerünk téged, a vállalkozásodat, a közönségedet, és úgy dolgozunk, mintha a sajátunk lenne.
+      </p>
+      <p style="color:var(--light-gray);font-size:0.9rem;line-height:1.7;">
+        A nagy ügynökségeknél bekerülsz egy sorba. Nálunk te vagy az első helyen.
+      </p>
+      <div class="why-pills">
+        <span class="pill">🤝 Személyes figyelem</span>
+        <span class="pill">💬 Elérhető vagyunk</span>
+        <span class="pill">🇭🇺 Helyi, nem globális</span>
+        <span class="pill">🔥 Tele vagyunk energiával</span>
+        <span class="pill">✨ Soha nem sablon</span>
+        <span class="pill">📲 Értjük a social mediát</span>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="why-card">
+        <div class="why-card-icon">🤝</div>
+        <h4>Te nem egy ikszedik ügyfél vagy</h4>
+        <p>Minden együttműködést komolyan veszünk — mert a mi hírnevünk is múlik rajta.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">📲</div>
+        <h4>Értjük, hogyan működik ma</h4>
+        <p>Nem tankönyvből tanuljuk a social mediát — mi magunk is benne élünk.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">💬</div>
+        <h4>Mindig elérsz minket</h4>
+        <p>Nem kell ticket-et nyitni vagy várni a következő meetingre. Írj, és válaszolunk.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🔥</div>
+        <h4>Éhesek vagyunk az eredményre</h4>
+        <p>Bizonyítani akarunk — neked és magunknak is. Ez más motiváció, mint egy rutin munkánál.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section id="process">
+  <div class="process-header">
+    <div class="section-label">Hogyan dolgozunk</div>
+    <h2>A <em>folyamatunk</em></h2>
+    <p>Négy lépésben az első konzultációtól a megjelenő tartalomig — minden átláthatóan és időre.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h3>Ingyenes konzultáció</h3>
+      <p>Megismerjük a vállalkozásodat, céljaidat és célközönségedet. Nulla kötelezettség.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h3>Stratégia & tervezés</h3>
+      <p>Kidolgozzuk a tartalomstratégiát és a shot list-et, ami a márkádhoz illeszkedik.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h3>Alkotás & gyártás</h3>
+      <p>Helyszíni forgatás, szövegírás, vágás — profi minőségben, határidőre.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h3>Publikálás & elemzés</h3>
+      <p>Közzétesszük a tartalmakat és nyomon követjük az eredményeket, folyamatosan fejlődünk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<div class="cta-banner">
+  <div class="section-label">Kezdjük el együtt</div>
+  <h2>Készen állsz, hogy<br><em>kitűnj</em> a tömegből?</h2>
+  <p>Az első konzultáció ingyenes és kötelezettségmentes. 24 órán belül visszajelzünk.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="#ajanlat" class="btn-primary">Ajánlatot kérek →</a>
+    <a href="mailto:hello@7sma.hu" class="btn-outline">Írj emailt</a>
+  </div>
+</div>
+
+<!-- ── QUOTE FORM ── -->
+<section id="ajanlat">
+  <div class="form-wrapper">
+    <div class="form-header">
+      <div class="section-label">Kapcsolat</div>
+      <h2>Kérj <em>ajánlatot</em></h2>
+      <p>Töltsd ki az űrlapot, és 24 órán belül visszajelzünk egy személyre szabott ajánlattal. Semmilyen kötelezettség.</p>
+    </div>
+
+    <div class="contact-row">
+      <a href="mailto:hello@7sma.hu" class="contact-item">
+        <span>📧</span><span>hello@7sma.hu</span>
+      </a>
+      <a href="tel:+36707784758" class="contact-item">
+        <span>📞</span><span>+36 70 778 4758</span>
+      </a>
+      <span class="contact-item">
+        <span>📍</span><span>2310 Szigetszentmiklós, Határ út 45.</span>
+      </span>
+    </div>
+
+    <div class="form-card">
+      <form id="quoteForm" action="https://formspree.io/f/xpwavzjg" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Neved *</label>
+            <input type="text" id="name" name="name" placeholder="pl. Kovács Péter" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Vállalkozás neve *</label>
+            <input type="text" id="company" name="company" placeholder="pl. Kovács Kft." required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="pelda@email.hu" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefonszám</label>
+            <input type="tel" id="phone" name="phone" placeholder="+36 70 000 0000" />
+          </div>
+          <div class="form-group full">
+            <label>Milyen szolgáltatás érdekel? *</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Helyszíni forgatás" /> Helyszíni forgatás</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Oldalkezelés" /> Oldalkezelés</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Személyre szabott stratégia" /> Személyre szabott stratégia</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Analitika" /> Analitika</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Videó brainstorming" /> Videó brainstorming</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Szöveg- és forgatókönyvírás" /> Szöveg- és forgatókönyvírás</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Shot list" /> Shot list összeállítása</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Poszt-naptár" /> Poszt-naptár</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Post-produkció & vágás" /> Post-produkció & vágás</label>
+              <label class="checkbox-label"><input type="checkbox" name="service" value="Komplex csomag" /> Komplex csomag</label>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="message">Mesélj a vállalkozásodról</label>
+            <textarea id="message" name="message" placeholder="Mivel foglalkozol? Mi a célod? Miben tudunk segíteni?"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary form-submit">Ajánlatot kérek →</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        ✓ Köszönjük! 24 órán belül jelentkezünk.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#"><span>7</span> Seven Marketing Agency</a>
+      <p>Marketing Ügynökség · Magyarország<br>Egyedi tartalom, ami valóban elad.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#services">Szolgáltatások</a>
+      <a href="#why">Rólunk</a>
+      <a href="#process">Folyamat</a>
+      <a href="#ajanlat">Ajánlatot kérek</a>
+      <a href="#" onclick="document.getElementById('privacyModal').classList.add('open')">Adatvédelmi Tájékoztató</a>
+    </div>
+    <div>
+      <p style="color:var(--gray);font-size:0.8rem;margin-bottom:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Kövess minket</p>
+      <div class="footer-socials">
+        <a class="social-link" href="https://www.instagram.com/horvathharon/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a class="social-link" href="https://www.facebook.com/share/16QMQ31wXW/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a class="social-link" href="https://www.tiktok.com/@horvathharon" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 7 Seven Marketing Agency · Magyarország</span>
+    <a href="#" onclick="document.getElementById('privacyModal').classList.add('open')">Adatvédelmi Tájékoztató</a>
+  </div>
+</footer>
+
+<!-- ── PRIVACY MODAL ── -->
+<div class="modal-overlay" id="privacyModal">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('privacyModal').classList.remove('open')">✕</button>
+    <h3>Adatvédelmi Tájékoztató</h3>
+    <h4>1. Adatkezelő</h4>
+    <p>7 Seven Marketing Agency<br>Székhely: 2310 Szigetszentmiklós, Határ út 45.<br>Email: hello@7sma.hu</p>
+    <h4>2. Kezelt adatok és céljuk</h4>
+    <p>Az ajánlatkérő űrlap kitöltésekor az alábbi személyes adatokat kezeljük:</p>
+    <ul>
+      <li>Név — kapcsolatfelvétel céljából</li>
+      <li>Email cím — ajánlat visszaküldése céljából</li>
+      <li>Vállalkozás neve — az ajánlat személyre szabása céljából</li>
+      <li>Telefonszám (opcionális) — telefonos kapcsolatfelvétel céljából</li>
+      <li>Üzenet tartalma — az ajánlat elkészítése céljából</li>
     </ul>
-  </footer>
+    <h4>3. Az adatkezelés jogalapja</h4>
+    <p>Az adatkezelés jogalapja az érintett hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont), amelyet az űrlap beküldésével ad meg.</p>
+    <h4>4. Adatmegőrzési idő</h4>
+    <p>Az adatokat az ajánlatkérés teljesítéséig, illetve legfeljebb 1 évig őrizzük meg. Ezt követően az adatokat töröljük.</p>
+    <h4>5. Adattovábbítás</h4>
+    <p>Az adatokat harmadik félnek nem adjuk át, kivéve a Formspree Inc. adatfeldolgozót, amely az űrlap technikai működtetését végzi (formspree.io).</p>
+    <h4>6. Az érintett jogai</h4>
+    <ul>
+      <li>Hozzáférni a kezelt adataihoz</li>
+      <li>Kérni az adatok helyesbítését vagy törlését</li>
+      <li>Visszavonni hozzájárulását bármikor</li>
+      <li>Panaszt benyújtani a NAIH-hoz (naih.hu)</li>
+    </ul>
+    <h4>7. Kapcsolat</h4>
+    <p>Adatvédelemmel kapcsolatos kérdéseivel forduljon hozzánk: <a href="mailto:hello@7sma.hu" style="color:var(--cyan)">hello@7sma.hu</a><br>Utolsó frissítés: 2025. május</p>
+  </div>
+</div>
 
-  <script>
-    function submitQuote() {
-      var name = document.getElementById('fname').value.trim();
-      var email = document.getElementById('femail').value.trim();
-      var company = document.getElementById('fcompany').value.trim();
-      if (!name || !email || !company) {
-        alert('Kérlek töltsd ki a kötelező mezőket (Név, Email, Vállalkozás neve)!');
-        return;
-      }
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMenu() { mobileMenu.classList.remove('open'); }
 
-      var services = [];
-      document.querySelectorAll('.chk input:checked').forEach(function(el) { services.push(el.value); });
-      var message = document.getElementById('fmsg').value.trim();
-      var phone = document.getElementById('fphone').value.trim();
+  // Close modal on overlay click
+  document.getElementById('privacyModal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
 
-      fetch('https://formspree.io/f/xjgazler', {
+  // Form submission
+  const form = document.getElementById('quoteForm');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Küldés...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          nev: name,
-          email: email,
-          vallalkozas: company,
-          telefon: phone,
-          szolgaltatasok: services.join(', '),
-          uzenet: message
-        })
-      })
-      .then(function(res) {
-        if (res.ok) {
-          document.getElementById('successMsg').style.display = 'block';
-          document.querySelector('.submit-btn').style.display = 'none';
-        } else {
-          alert('Hiba történt, kérlek próbáld újra!');
-        }
-      })
-      .catch(function() {
-        alert('Hiba történt, kérlek próbáld újra!');
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'Hiba történt — próbáld újra';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Hiba történt — próbáld újra';
+      btn.disabled = false;
     }
+  });
 
-    function openPrivacy() { document.getElementById('privacyModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closePrivacy() { document.getElementById('privacyModal').classList.remove('open'); document.body.style.overflow = ''; }
-    document.getElementById('privacyModal').addEventListener('click', function(e) { if (e.target === this) closePrivacy(); });
+  // Nav darkens on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 40
+      ? 'rgba(10,10,10,0.97)'
+      : 'rgba(10,10,10,0.85)';
+  }, { passive: true });
 
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    reveals.forEach(function(el) { observer.observe(el); });
-  </script>
+  // ── VARIED SCROLL ANIMATIONS ──
+  const css = `
+    /* Base hidden state */
+    [data-anim] { will-change: transform, opacity; }
+
+    /* fade-up: sections headers, general */
+    [data-anim="fade-up"] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    /* slide-left: why-left text block */
+    [data-anim="slide-left"] {
+      opacity: 0;
+      transform: translateX(-48px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    /* slide-right: why cards */
+    [data-anim="slide-right"] {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    /* pop: service cards — scale up from slightly smaller */
+    [data-anim="pop"] {
+      opacity: 0;
+      transform: scale(0.88) translateY(16px);
+      transition: opacity 0.55s cubic-bezier(0.34,1.56,0.64,1),
+                  transform 0.55s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    /* flip-up: process steps — come from below with rotation hint */
+    [data-anim="flip-up"] {
+      opacity: 0;
+      transform: translateY(40px) rotateX(12deg);
+      transform-origin: bottom center;
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    /* zoom: form card */
+    [data-anim="zoom"] {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    /* fade-down: contact row drops in from above */
+    [data-anim="fade-down"] {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
+    }
+    /* visible = all animations resolved */
+    [data-anim].in {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  `;
+  const styleEl = document.createElement('style');
+  styleEl.textContent = css;
+  document.head.appendChild(styleEl);
+
+  // Assign animations to elements
+  // Section headers: fade-up
+  document.querySelectorAll('.services-header, .process-header, .form-header').forEach(el => {
+    el.setAttribute('data-anim', 'fade-up');
+  });
+
+  // CTA banner children: fade-up staggered
+  document.querySelectorAll('.cta-banner h2, .cta-banner p, .cta-banner div').forEach((el, i) => {
+    el.setAttribute('data-anim', 'fade-up');
+    el.style.transitionDelay = `${i * 80}ms`;
+  });
+
+  // Service cards: pop, staggered by column position
+  document.querySelectorAll('.service-card').forEach((el, i) => {
+    el.setAttribute('data-anim', 'pop');
+    el.style.transitionDelay = `${(i % 3) * 70}ms`;
+  });
+
+  // Why left: slide from left
+  const whyLeft = document.querySelector('.why-left');
+  if (whyLeft) whyLeft.setAttribute('data-anim', 'slide-left');
+
+  // Why cards: slide from right, staggered
+  document.querySelectorAll('.why-card').forEach((el, i) => {
+    el.setAttribute('data-anim', 'slide-right');
+    el.style.transitionDelay = `${i * 100}ms`;
+  });
+
+  // Process steps: flip-up, staggered
+  document.querySelectorAll('.process-step').forEach((el, i) => {
+    el.setAttribute('data-anim', 'flip-up');
+    el.style.transitionDelay = `${i * 120}ms`;
+  });
+
+  // Contact row: drops from above
+  const contactRow = document.querySelector('.contact-row');
+  if (contactRow) contactRow.setAttribute('data-anim', 'fade-down');
+
+  // Form card: zoom in
+  const formCard = document.querySelector('.form-card');
+  if (formCard) {
+    formCard.setAttribute('data-anim', 'zoom');
+    formCard.style.transitionDelay = '120ms';
+  }
+
+  // Observer — fires once per element
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
