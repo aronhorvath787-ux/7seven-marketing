@@ -1108,7 +1108,7 @@
     </div>
 
     <div class="form-card">
-      <form id="quoteForm" action="https://formspree.io/f/xpwavzjg" method="POST">
+      <form id="quoteForm" action="https://formspree.io/f/xjgazler" method="POST">
         <div class="form-grid">
           <div class="form-group">
             <label for="name">Neved *</label>
@@ -1238,7 +1238,7 @@
     btn.textContent = 'Küldés...';
     btn.disabled = true;
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch('https://formspree.io/f/xjgazler', {
         method: 'POST',
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
@@ -1247,10 +1247,13 @@
         form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       } else {
+        const data = await res.json();
+        console.error('Formspree hiba:', data);
         btn.textContent = 'Hiba történt — próbáld újra';
         btn.disabled = false;
       }
-    } catch {
+    } catch (err) {
+      console.error('Hálózati hiba:', err);
       btn.textContent = 'Hiba történt — próbáld újra';
       btn.disabled = false;
     }
