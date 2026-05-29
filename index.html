@@ -25,7 +25,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       background: var(--black);
@@ -1189,32 +1189,89 @@
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('privacyModal').classList.remove('open')">✕</button>
     <h3>Adatvédelmi Tájékoztató</h3>
-    <h4>1. Adatkezelő</h4>
-    <p>7 Seven Marketing Agency<br>Székhely: 2310 Szigetszentmiklós, Határ út 45.<br>Email: hello@7sma.hu</p>
-    <h4>2. Kezelt adatok és céljuk</h4>
-    <p>Az ajánlatkérő űrlap kitöltésekor az alábbi személyes adatokat kezeljük:</p>
+
+    <p style="color:var(--gray);font-size:0.82rem;">Hatályos: 2025. május 1-től · Utolsó frissítés: 2025. május</p>
+
+    <h4>1. Az adatkezelő adatai</h4>
+    <p>
+      <strong style="color:var(--white);">Név:</strong> 7 Seven Marketing Agency (egyéni vállalkozó)<br>
+      <strong style="color:var(--white);">Székhely:</strong> 2310 Szigetszentmiklós, Határ út 45.<br>
+      <strong style="color:var(--white);">Email:</strong> hello@7sma.hu<br>
+      <strong style="color:var(--white);">Telefon:</strong> +36 70 778 4758<br>
+      <strong style="color:var(--white);">Weboldal:</strong> www.7sma.hu
+    </p>
+
+    <h4>2. Az adatkezelés célja és jogalapja</h4>
+    <p>A 7 Seven Marketing Agency a következő célokból és jogalapokon kezel személyes adatokat:</p>
     <ul>
-      <li>Név — kapcsolatfelvétel céljából</li>
-      <li>Email cím — ajánlat visszaküldése céljából</li>
-      <li>Vállalkozás neve — az ajánlat személyre szabása céljából</li>
-      <li>Telefonszám (opcionális) — telefonos kapcsolatfelvétel céljából</li>
-      <li>Üzenet tartalma — az ajánlat elkészítése céljából</li>
+      <li><strong style="color:var(--white);">Ajánlatkérés feldolgozása:</strong> Az ajánlatkérő űrlapon megadott adatokat (név, email, telefonszám, vállalkozás neve, üzenet) az ajánlat elkészítése és a kapcsolatfelvétel céljából kezeljük. Jogalap: az érintett hozzájárulása (GDPR 6. cikk (1) bek. a) pont).</li>
+      <li><strong style="color:var(--white);">Szerződéskötés és teljesítés:</strong> Ügyfeleink adatait a szerződéses kötelezettségeink teljesítéséhez kezeljük. Jogalap: szerződés teljesítése (GDPR 6. cikk (1) bek. b) pont).</li>
+      <li><strong style="color:var(--white);">Jogi kötelezettség teljesítése:</strong> Számviteli, adózási és egyéb jogszabályi kötelezettségek teljesítése. Jogalap: jogi kötelezettség (GDPR 6. cikk (1) bek. c) pont).</li>
+      <li><strong style="color:var(--white);">Jogos érdek:</strong> Az üzleti kapcsolat fenntartása, a szolgáltatás minőségének javítása. Jogalap: jogos érdek (GDPR 6. cikk (1) bek. f) pont).</li>
     </ul>
-    <h4>3. Az adatkezelés jogalapja</h4>
-    <p>Az adatkezelés jogalapja az érintett hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont), amelyet az űrlap beküldésével ad meg.</p>
-    <h4>4. Adatmegőrzési idő</h4>
-    <p>Az adatokat az ajánlatkérés teljesítéséig, illetve legfeljebb 1 évig őrizzük meg. Ezt követően az adatokat töröljük.</p>
-    <h4>5. Adattovábbítás</h4>
-    <p>Az adatokat harmadik félnek nem adjuk át, kivéve a Formspree Inc. adatfeldolgozót, amely az űrlap technikai működtetését végzi (formspree.io).</p>
-    <h4>6. Az érintett jogai</h4>
+
+    <h4>3. A kezelt személyes adatok köre</h4>
     <ul>
-      <li>Hozzáférni a kezelt adataihoz</li>
-      <li>Kérni az adatok helyesbítését vagy törlését</li>
-      <li>Visszavonni hozzájárulását bármikor</li>
-      <li>Panaszt benyújtani a NAIH-hoz (naih.hu)</li>
+      <li>Azonosító adatok: teljes név, vállalkozás neve</li>
+      <li>Elérhetőségi adatok: email cím, telefonszám, lakcím/székhely</li>
+      <li>Kommunikációs adatok: üzenetek tartalma, levelezés</li>
+      <li>Technikai adatok: IP-cím, böngészőtípus (csak weboldal-látogatás esetén, cookie-k útján)</li>
+      <li>Pénzügyi adatok: számlázási adatok (csak szerződéses ügyfelek esetén)</li>
     </ul>
-    <h4>7. Kapcsolat</h4>
-    <p>Adatvédelemmel kapcsolatos kérdéseivel forduljon hozzánk: <a href="mailto:hello@7sma.hu" style="color:var(--cyan)">hello@7sma.hu</a><br>Utolsó frissítés: 2025. május</p>
+
+    <h4>4. Az adatkezelés időtartama</h4>
+    <ul>
+      <li><strong style="color:var(--white);">Ajánlatkérések:</strong> A kapcsolatfelvételtől számított 1 évig, vagy az érintett törlési kérelméig.</li>
+      <li><strong style="color:var(--white);">Szerződéses adatok:</strong> A szerződés megszűnésétől számított 5 évig (Ptk. általános elévülési idő).</li>
+      <li><strong style="color:var(--white);">Számviteli bizonylatok:</strong> 8 évig (2000. évi C. törvény alapján).</li>
+      <li><strong style="color:var(--white);">Hozzájáruláson alapuló adatkezelés:</strong> A hozzájárulás visszavonásáig.</li>
+    </ul>
+
+    <h4>5. Adattovábbítás és adatfeldolgozók</h4>
+    <p>Az adatkezelő az alábbi adatfeldolgozókat veszi igénybe:</p>
+    <ul>
+      <li><strong style="color:var(--white);">Formspree Inc.</strong> (USA) — az ajánlatkérő űrlap technikai működtetése. Adatkezelési tájékoztató: formspree.io/legal/privacy-policy</li>
+      <li><strong style="color:var(--white);">Vercel Inc.</strong> (USA) — weboldal-tárhely szolgáltatás. Az EU-USA adattovábbítás megfelelő garanciák (Standard Contractual Clauses) alapján történik.</li>
+      <li><strong style="color:var(--white);">Google LLC</strong> — Google Fonts betűtípus-szolgáltatás. Adattovábbítás az EU-USA adatvédelmi keretrendszer alapján.</li>
+    </ul>
+    <p>Adatait harmadik félnek nem adjuk el, és marketing célú adattovábbítást nem végzünk.</p>
+
+    <h4>6. Cookie-k (sütik)</h4>
+    <p>Weboldalunk az alábbi sütiket használja:</p>
+    <ul>
+      <li><strong style="color:var(--white);">Technikailag szükséges sütik:</strong> A weboldal megfelelő működéséhez elengedhetetlenek. Ezekhez nem szükséges hozzájárulás.</li>
+      <li><strong style="color:var(--white);">Google Fonts:</strong> A betűtípusok betöltésekor a Google szerverei naplózzák az IP-címet. Ez technikailag szükséges, és a Google adatvédelmi szabályzata vonatkozik rá.</li>
+    </ul>
+    <p>Webanalitikai vagy marketing cookie-kat jelenleg nem alkalmazunk.</p>
+
+    <h4>7. Az érintett jogai</h4>
+    <p>A GDPR alapján Önt az alábbi jogok illetik meg:</p>
+    <ul>
+      <li><strong style="color:var(--white);">Hozzáférési jog (15. cikk):</strong> Tájékoztatást kérhet a kezelt adatairól.</li>
+      <li><strong style="color:var(--white);">Helyesbítési jog (16. cikk):</strong> Kérheti pontatlan adatai kijavítását.</li>
+      <li><strong style="color:var(--white);">Törléshez való jog (17. cikk):</strong> Bizonyos feltételek mellett kérheti adatai törlését.</li>
+      <li><strong style="color:var(--white);">Adatkezelés korlátozásához való jog (18. cikk):</strong> Kérheti az adatkezelés korlátozását.</li>
+      <li><strong style="color:var(--white);">Adathordozhatósághoz való jog (20. cikk):</strong> Kérheti adatai géppel olvasható formátumban való kiadását.</li>
+      <li><strong style="color:var(--white);">Tiltakozáshoz való jog (21. cikk):</strong> Tiltakozhat jogos érdeken alapuló adatkezelés ellen.</li>
+      <li><strong style="color:var(--white);">Hozzájárulás visszavonása:</strong> A hozzájáruláson alapuló adatkezelést bármikor visszavonhatja, ez nem érinti a visszavonás előtti adatkezelés jogszerűségét.</li>
+    </ul>
+    <p>Jogai gyakorlásához forduljon hozzánk: <a href="mailto:hello@7sma.hu" style="color:var(--cyan)">hello@7sma.hu</a> — kérelmére 30 napon belül válaszolunk.</p>
+
+    <h4>8. Jogorvoslat</h4>
+    <p>Ha úgy ítéli meg, hogy adatkezelésünk megsérti a GDPR-t, panaszt nyújthat be a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH):</p>
+    <ul>
+      <li>Weboldal: <a href="https://naih.hu" target="_blank" style="color:var(--cyan)">naih.hu</a></li>
+      <li>Cím: 1055 Budapest, Falk Miksa utca 9–11.</li>
+      <li>Email: ugyfelszolgalat@naih.hu</li>
+      <li>Telefon: +36 1 391 1400</li>
+    </ul>
+    <p>Bírósághoz is fordulhat — az Ön lakóhelye vagy tartózkodási helye szerint illetékes törvényszékhez.</p>
+
+    <h4>9. Adatbiztonság</h4>
+    <p>Az adatkezelő megfelelő technikai és szervezési intézkedésekkel gondoskodik a személyes adatok biztonságáról, védelméről a jogosulatlan hozzáférés, megváltoztatás, továbbítás, nyilvánosságra hozatal, törlés vagy megsemmisítés ellen. Adatait titkosított kapcsolaton (HTTPS) keresztül közöljük.</p>
+
+    <h4>10. Tájékoztató módosítása</h4>
+    <p>Az adatkezelő fenntartja a jogot jelen tájékoztató módosítására. A változásokról a weboldalon keresztül tájékoztatjuk az érintetteket. Az adatkezelés lényeges megváltozása esetén előzetes értesítést küldünk.</p>
   </div>
 </div>
 
