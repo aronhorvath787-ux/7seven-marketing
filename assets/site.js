@@ -54,30 +54,48 @@ if (mnav) {
 // ---- hero film sound (icon button) ----
 const hv = hero && $('video', hero), hb = $('#heroSound');
 const soundLabel = muted => muted ? (EN ? 'Turn sound on' : 'Hang bekapcsolása') : (EN ? 'Turn sound off' : 'Hang kikapcsolása');
-if (hb) hb.onclick = () => { hv.muted = !hv.muted; hb.setAttribute('aria-pressed', String(!hv.muted)); hb.setAttribute('aria-label', soundLabel(hv.muted)); };
+if (hb) hb.onclick = () => { hv.muted = !hv.muted; if (!hv.muted) works.forEach(o => o.pause()); hb.setAttribute('aria-pressed', String(!hv.muted)); hb.setAttribute('aria-label', soundLabel(hv.muted)); };
 
-// ---- work videos: nothing autoplays; the clicked one plays with sound, all others pause ----
-const works = $$('video[data-work]'), cur = $('#cursor');
-$$('[data-cursor]').forEach(box => {
-  const v = $('video', box);
-  const sync = () => cur && cur.classList.toggle('playing', !v.paused);
-  box.addEventListener('mouseenter', () => { cur.classList.add('on'); sync(); });
-  box.addEventListener('mouseleave', () => cur.classList.remove('on'));
-  box.addEventListener('click', () => {
+// ---- video players (film + reels): nothing autoplays; play/pause, scrub, sound, full screen ----
+const works = $$('video[data-work]');
+const mmss = t => { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
+$$('.player').forEach(box => {
+  const v = $('video', box), seek = $('.c-seek', box), time = $('.c-time', box);
+  const toggle = () => {
     if (v.paused) {
       works.forEach(o => { if (o !== v) o.pause(); });
-      if (hv) { hv.muted = true; hb && hb.setAttribute('aria-pressed', 'false'); }
+      if (hv && !hv.muted) { hv.muted = true; hb.setAttribute('aria-pressed', 'false'); hb.setAttribute('aria-label', soundLabel(true)); }
       v.play();
     } else v.pause();
+  };
+  const stop = e => e.stopPropagation();
+  $('.play', box).addEventListener('click', e => { stop(e); toggle(); });
+  $('.c-play', box).addEventListener('click', e => { stop(e); toggle(); });
+  v.addEventListener('click', toggle);
+  $('.c-mute', box).addEventListener('click', e => { stop(e); v.muted = !v.muted; box.classList.toggle('muted', v.muted); });
+  $('.c-fs', box).addEventListener('click', e => {
+    stop(e);
+    if (document.fullscreenElement || document.webkitFullscreenElement) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    if (box.requestFullscreen) box.requestFullscreen();
+    else if (box.webkitRequestFullscreen) box.webkitRequestFullscreen();
+    else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();   // iPhone: native player
+    if (v.paused) toggle();
   });
-  box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); box.click(); } });
-  v.addEventListener('play', () => { box.classList.add('playing'); sync(); });
-  v.addEventListener('pause', () => { box.classList.remove('playing'); sync(); });
-  v.addEventListener('ended', () => { v.currentTime = 0; });
+  const paint = () => {
+    const f = v.duration ? v.currentTime / v.duration : 0;
+    seek.value = Math.round(f * 1000); seek.style.setProperty('--p', (f * 100).toFixed(2) + '%');
+    time.textContent = mmss(v.currentTime);
+  };
+  seek.addEventListener('input', () => { if (v.duration) v.currentTime = seek.value / 1000 * v.duration; paint(); });
+  $('.ctl', box).addEventListener('click', stop);
+  v.addEventListener('timeupdate', paint);
+  v.addEventListener('play', () => box.classList.add('playing', 'started'));
+  v.addEventListener('pause', () => box.classList.remove('playing'));
+  v.addEventListener('ended', () => { v.currentTime = 0; paint(); });
 });
-const vio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) e.target.pause(); }), { threshold: .1 });
+// leaving the screen pauses a video (but not while it is in full screen)
+const vio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !document.fullscreenElement) e.target.pause(); }), { threshold: .1 });
 works.forEach(v => vio.observe(v));
-if (cur) addEventListener('mousemove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; }, { passive: true });
 
 // ---- reels carousel: active reel centred in a phone frame, neighbours peek; swipe, arrows, dots ----
 const rc = $('#reels');
@@ -89,7 +107,7 @@ if (rc) {
     const f = d + drag, a = Math.min(1, Math.abs(f));
     c.style.setProperty('--d', f.toFixed(3));
     c.style.setProperty('--s', (1 - a * .16).toFixed(3));
-    c.style.setProperty('--o', (1 - a * .6).toFixed(3));
+    c.style.setProperty('--o', (1 - a * .12).toFixed(3));
     c.style.setProperty('--z', String(10 - Math.round(Math.abs(f) * 2)));
     c.classList.toggle('on', d === 0);
   });
@@ -102,7 +120,7 @@ if (rc) {
   cards.forEach((c, k) => c.addEventListener('click', () => { if (k !== i) go(k); }));
   rc.addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(i + 1); if (e.key === 'ArrowLeft') go(i - 1); });
   const stage = $('.rc-stage', rc);
-  stage.addEventListener('pointerdown', e => { sx = e.clientX; ddx = 0; });
+  stage.addEventListener('pointerdown', e => { if (e.target.closest('.ctl')) return; sx = e.clientX; ddx = 0; });
   stage.addEventListener('pointermove', e => {
     if (sx === null) return; ddx = e.clientX - sx;
     if (Math.abs(ddx) > 6) { rc.classList.add('dragging'); place(ddx / (stage.offsetHeight * .5)); }
