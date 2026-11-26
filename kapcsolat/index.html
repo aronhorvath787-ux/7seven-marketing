@@ -10,31 +10,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Open+Sans:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/site.css?v=7e">
 <link rel="alternate" hreflang="hu" href="../index.html"><link rel="alternate" hreflang="en" href="../en/index.html">
 </head>
 <body>
-<div class="sample-badge" id="badge">Design sample v6 · placeholder text</div>
+<div class="sample-badge" id="badge">Design sample v7 · placeholder text</div>
 <div class="cursor" id="cursor" aria-hidden="true"><svg class="play-i" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15"/><rect x="14" y="4.5" width="4" height="15"/></svg></div>
 
 <header class="frame solid" id="frame">
   <a class="brand" href="../index.html" aria-label="Seven Marketing Agency – kezdőlap"><img src="../logo/seven-monogram.svg" alt=""><span class="label">Seven Marketing Agency</span></a>
-  <nav class="label" aria-label="Fő navigáció">
+  <nav class="label" aria-label="Menü">
     <a class="links" href="../index.html#szolg">Szolgáltatások</a>
     <a class="links" href="../index.html#munkaink">Munkáink</a>
     <a class="links" href="../index.html#rolunk">Rólunk</a>
     <a class="links cur" href="../kapcsolat/index.html">Kapcsolat</a>
     <span class="lang"><b>HU</b><span>/</span><a href="../en/contact/index.html" hreflang="en" lang="en">EN</a></span>
-    <button class="menu" id="menuBtn" type="button">Menü</button>
+    <button class="menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav">Menü<i aria-hidden="true"></i></button>
   </nav>
 </header>
-<div class="mnav" id="mnav" role="dialog" aria-label="Menü">
-  <button class="close label" id="menuClose" type="button">Bezárás ✕</button>
-  <a href="../index.html#szolg">Szolgáltatások</a>
-  <a href="../index.html#munkaink">Munkáink</a>
-  <a href="../index.html#rolunk">Rólunk</a>
-  <a href="../kapcsolat/index.html">Kapcsolat</a>
-  <div class="meta2"><a href="../en/contact/index.html">EN</a><a href="https://www.instagram.com/sevmarketingagency/" target="_blank" rel="noopener">Instagram</a></div>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menü">
+  <div class="mtop">
+    <a class="brand" href="../index.html" aria-label="Seven Marketing Agency – kezdőlap"><img src="../logo/seven-monogram.svg" alt=""></a>
+    <button class="close label" id="menuClose" type="button">Bezárás <i aria-hidden="true"></i></button>
+  </div>
+  <p class="label mhead">Oldalak</p>
+  <nav class="mlist"><a href="../index.html#szolg" style="--k:0"><span class="n">01</span><span class="t">Szolgáltatások</span><span class="ar" aria-hidden="true">→</span></a><a href="../index.html#munkaink" style="--k:1"><span class="n">02</span><span class="t">Munkáink</span><span class="ar" aria-hidden="true">→</span></a><a href="../index.html#rolunk" style="--k:2"><span class="n">03</span><span class="t">Rólunk</span><span class="ar" aria-hidden="true">→</span></a><a href="../kapcsolat/index.html" style="--k:3"><span class="n">04</span><span class="t">Kapcsolat</span><span class="ar" aria-hidden="true">→</span></a></nav>
+  <div class="mfoot">
+    <p class="acro acro-sm" aria-label="Socials Evaluation by the Vanguard"><span><b>S</b>ocials</span><span><b>E</b>valuation</span><span class="by">by the</span><span><b>V</b>anguard</span></p>
+    <div class="mcols label">
+      <div><span>Elérhetőség</span><a href="mailto:hello@7sma.hu">hello@7sma.hu</a><a href="tel:+36707784758">+36 70 778 4758</a></div>
+      <div><span>Követés</span><a href="https://www.instagram.com/sevmarketingagency/" target="_blank" rel="noopener">Instagram</a></div>
+      <div><span>Nyelv</span><span class="lang"><b>HU</b><span>/</span><a href="../en/contact/index.html" hreflang="en" lang="en">EN</a></span></div>
+    </div>
+  </div>
 </div>
 
 <main class="page">
@@ -64,27 +72,22 @@
       <p class="form-msg" aria-live="polite"></p>
     </form>
   </div>
-  <section class="faq" id="gyik">
-    <div class="sec-head rv"><span class="label">GYIK · Gyakori kérdések</span><span class="label">01 — 05</span></div>
-    <details><summary><span class="num">01</span><span><span class="ph">[[ÍRD: question 1]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 1 · 2–4 sentences]]</span></div></details>
-    <details><summary><span class="num">02</span><span><span class="ph">[[ÍRD: question 2]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 2 · 2–4 sentences]]</span></div></details>
-    <details><summary><span class="num">03</span><span><span class="ph">[[ÍRD: question 3]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 3 · 2–4 sentences]]</span></div></details>
-    <details><summary><span class="num">04</span><span><span class="ph">[[ÍRD: question 4]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 4 · 2–4 sentences]]</span></div></details>
-    <details><summary><span class="num">05</span><span><span class="ph">[[ÍRD: question 5]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 5 · 2–4 sentences]]</span></div></details>
-  </section>
 </main>
 
 <footer id="footer">
-  <div class="lock"><a href="../index.html"><img src="../logo/seven-logo-lockup.svg" alt="Seven Marketing Agency"></a></div>
-  <p class="line"><span class="ph ph-light">[[ÍRD: footer line · max 10 words]]</span></p>
-  <nav class="label">
-    <a href="../index.html#szolg">Szolgáltatások</a><a href="../index.html#munkaink">Munkáink</a><a href="../index.html#rolunk">Rólunk</a><a href="../kapcsolat/index.html">Kapcsolat</a>
-    <a href="https://www.instagram.com/sevmarketingagency/" target="_blank" rel="noopener">Instagram</a>
-  </nav>
-  <div class="bottom label">
-    <span>© 2026 Seven Marketing Agency. Minden jog fenntartva.</span>
-    <span class="legal"><a href="../adatvedelem/index.html">Adatvédelmi tájékoztató</a><a href="../impresszum/index.html">Impresszum</a><button type="button" id="cookieOpen">Süti-beállítások</button></span>
+  <div class="fcard">
+    <div class="ftop">
+      <a class="flogo" href="../index.html"><img src="../logo/seven-logo-lockup.svg" alt="Seven Marketing Agency"></a>
+      <p class="acro acro-sm" aria-label="Socials Evaluation by the Vanguard"><span><b>S</b>ocials</span><span><b>E</b>valuation</span><span class="by">by the</span><span><b>V</b>anguard</span></p>
+      <a class="btn btn-light" href="../kapcsolat/index.html#ajanlat">Ajánlatot kérek <span>→</span></a>
+    </div>
+    <div class="fcols">
+      <div><h3 class="label">Felfedezés</h3><a href="../index.html#szolg">Szolgáltatások</a><a href="../index.html#munkaink">Munkáink</a><a href="../index.html#rolunk">Rólunk</a><a href="../kapcsolat/index.html">Kapcsolat</a></div>
+      <div><h3 class="label">Kapcsolat</h3><a href="mailto:hello@7sma.hu">hello@7sma.hu</a><a href="tel:+36707784758">+36 70 778 4758</a><a href="https://www.instagram.com/sevmarketingagency/" target="_blank" rel="noopener">@sevmarketingagency</a></div>
+      <div><h3 class="label">Dokumentumok</h3><a href="../adatvedelem/index.html">Adatvédelmi tájékoztató</a><a href="../impresszum/index.html">Impresszum</a><button type="button" id="cookieOpen">Süti-beállítások</button></div>
+    </div>
   </div>
+  <p class="fbottom label">© 2026 Seven Marketing Agency. Minden jog fenntartva.</p>
 </footer>
 
 <div class="cookie" id="cookie" role="dialog" aria-modal="false" aria-labelledby="ckTitle">
@@ -108,6 +111,6 @@
   </div>
 </div>
 
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=7e"></script>
 </body>
 </html>

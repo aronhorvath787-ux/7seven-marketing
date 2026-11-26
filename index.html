@@ -10,48 +10,54 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Open+Sans:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.css?v=7e">
 <link rel="alternate" hreflang="hu" href="index.html"><link rel="alternate" hreflang="en" href="en/index.html">
 </head>
 <body>
-<div class="sample-badge" id="badge">Design sample v6 · placeholder text</div>
+<div class="sample-badge" id="badge">Design sample v7 · placeholder text</div>
 <div class="cursor" id="cursor" aria-hidden="true"><svg class="play-i" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15"/><rect x="14" y="4.5" width="4" height="15"/></svg></div>
 
 <header class="frame" id="frame">
   <a class="brand" href="index.html" aria-label="Seven Marketing Agency – kezdőlap"><img src="logo/seven-monogram.svg" alt=""><span class="label">Seven Marketing Agency</span></a>
-  <nav class="label" aria-label="Fő navigáció">
+  <nav class="label" aria-label="Menü">
     <a class="links" href="#szolg">Szolgáltatások</a>
     <a class="links" href="#munkaink">Munkáink</a>
     <a class="links" href="#rolunk">Rólunk</a>
     <a class="links" href="kapcsolat/index.html">Kapcsolat</a>
     <span class="lang"><b>HU</b><span>/</span><a href="en/index.html" hreflang="en" lang="en">EN</a></span>
-    <button class="menu" id="menuBtn" type="button">Menü</button>
+    <button class="menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav">Menü<i aria-hidden="true"></i></button>
   </nav>
 </header>
-<div class="mnav" id="mnav" role="dialog" aria-label="Menü">
-  <button class="close label" id="menuClose" type="button">Bezárás ✕</button>
-  <a href="#szolg">Szolgáltatások</a>
-  <a href="#munkaink">Munkáink</a>
-  <a href="#rolunk">Rólunk</a>
-  <a href="kapcsolat/index.html">Kapcsolat</a>
-  <div class="meta2"><a href="en/index.html">EN</a><a href="https://www.instagram.com/sevmarketingagency/" target="_blank" rel="noopener">Instagram</a></div>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menü">
+  <div class="mtop">
+    <a class="brand" href="index.html" aria-label="Seven Marketing Agency – kezdőlap"><img src="logo/seven-monogram.svg" alt=""></a>
+    <button class="close label" id="menuClose" type="button">Bezárás <i aria-hidden="true"></i></button>
+  </div>
+  <p class="label mhead">Oldalak</p>
+  <nav class="mlist"><a href="#szolg" style="--k:0"><span class="n">01</span><span class="t">Szolgáltatások</span><span class="ar" aria-hidden="true">→</span></a><a href="#munkaink" style="--k:1"><span class="n">02</span><span class="t">Munkáink</span><span class="ar" aria-hidden="true">→</span></a><a href="#rolunk" style="--k:2"><span class="n">03</span><span class="t">Rólunk</span><span class="ar" aria-hidden="true">→</span></a><a href="kapcsolat/index.html" style="--k:3"><span class="n">04</span><span class="t">Kapcsolat</span><span class="ar" aria-hidden="true">→</span></a></nav>
+  <div class="mfoot">
+    <p class="acro acro-sm" aria-label="Socials Evaluation by the Vanguard"><span><b>S</b>ocials</span><span><b>E</b>valuation</span><span class="by">by the</span><span><b>V</b>anguard</span></p>
+    <div class="mcols label">
+      <div><span>Elérhetőség</span><a href="mailto:hello@7sma.hu">hello@7sma.hu</a><a href="tel:+36707784758">+36 70 778 4758</a></div>
+      <div><span>Követés</span><a href="https://www.instagram.com/sevmarketingagency/" target="_blank" rel="noopener">Instagram</a></div>
+      <div><span>Nyelv</span><span class="lang"><b>HU</b><span>/</span><a href="en/index.html" hreflang="en" lang="en">EN</a></span></div>
+    </div>
+  </div>
 </div>
 
 <main>
 <section class="hero" id="hero">
   <div class="media"><video src="video/hero.mp4" poster="img/hero-poster.jpg" autoplay muted loop playsinline></video></div>
   <div class="content">
-    <p class="label rv"><span class="ph ph-light">[[ÍRD: small line above the headline · max 5 words]]</span></p>
-    <h1 class="display" data-split><span class="ph ph-light">[[ÍRD: hero headline · 3–7 words]]</span></h1>
+    <p class="label kicker rv">Socials Evaluation by the Vanguard</p>
+    <h1 class="display" data-split>Bringing Value Back to Social Media</h1>
     <p class="intro rv"><span class="ph ph-light">[[ÍRD: intro · 1–2 sentences]]</span></p>
     <a class="btn rv" href="#munkaink">Munkáink <span>→</span></a>
   </div>
   <div class="foot label">
-    <span><span><span class="ph ph-light">[[PROJECT NAME]]</span> · <span class="ph ph-light">[[CLIENT]]</span></span>
-      <button type="button" class="icon-btn" id="heroSound" aria-pressed="false" aria-label="Hang bekapcsolása"><svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg></button></span>
+    <button type="button" class="icon-btn" id="heroSound" aria-pressed="false" aria-label="Hang bekapcsolása"><svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg></button>
     <span class="cue">Görgess <i></i></span>
   </div>
-  <div class="polaroid drop"><img class="bw" src="img/bts-event.jpg" alt=""></div>
 </section>
 
 <section class="statement">
@@ -70,7 +76,7 @@
 </section>
 
 <section class="work" id="munkaink">
-  <div class="sec-head rv"><span class="label">No. 03 · Munkáink</span><span class="label">EvenTech Solutions · RepEat Burger · Xtravel</span></div>
+  <div class="sec-head rv"><span class="label">No. 03 · Munkáink</span><span class="label">01 — 03</span></div>
 
   <article class="project p-a">
     <div class="vid reveal" data-cursor tabindex="0"><video src="video/ets.mp4" poster="img/ets-poster.jpg" playsinline preload="metadata" data-work></video><span class="play" aria-hidden="true"></span></div>
@@ -81,43 +87,53 @@
       <p class="desc"><span class="ph">[[ÍRD: one-line project description]]</span></p>
     </div>
   </article>
+</section>
 
-  <article class="project p-b">
-    <div class="meta rv">
-      <span class="label idx">02 — Reels</span>
-      <h3 class="pn"><span class="ph">[[PROJECT NAME]]</span></h3>
-      <span class="label">Ügyfél</span><span>RepEat Burger</span><span class="label">Év</span><span>2026</span><span class="label">Munka</span><span><span class="ph">[[ÍRD: services]]</span></span><span class="label">Formátum</span><span>3 × Reels · 9:16</span>
-      <p class="desc"><span class="ph">[[ÍRD: one-line project description]]</span></p>
+<section class="reels-band" aria-label="Reels">
+  <div class="rb-head rv">
+    <span class="label">02 — Reels</span>
+    <p><span class="ph ph-light">[[ÍRD: one line about the reels · max 12 words]]</span></p>
+    <span class="label">3 × Reels · 9:16</span>
+  </div>
+  <div class="rc" id="reels" tabindex="0" aria-roledescription="carousel">
+    <div class="rc-stage"><div class="rc-card" data-k="0"><div class="vid" data-cursor tabindex="0" aria-label="Reel 1"><video src="video/food-1.mp4" poster="img/food-1-poster.jpg" playsinline preload="metadata" data-work></video><span class="play" aria-hidden="true"></span></div></div><div class="rc-card" data-k="1"><div class="vid" data-cursor tabindex="0" aria-label="Reel 2"><video src="video/food-2.mp4" poster="img/food-2-poster.jpg" playsinline preload="metadata" data-work></video><span class="play" aria-hidden="true"></span></div></div><div class="rc-card" data-k="2"><div class="vid" data-cursor tabindex="0" aria-label="Reel 3"><video src="video/food-3.mp4" poster="img/food-3-poster.jpg" playsinline preload="metadata" data-work></video><span class="play" aria-hidden="true"></span></div></div></div>
+    <div class="rc-ctrl">
+      <button class="arr" type="button" data-r="-1" aria-label="Előző">←</button>
+      <div class="dots" id="rDots"><button class="on" aria-label="1"></button><button aria-label="2"></button><button aria-label="3"></button></div>
+      <button class="arr" type="button" data-r="1" aria-label="Következő">→</button>
     </div>
-    <div class="reels"><div class="vid reveal" data-cursor tabindex="0"><video src="video/food-1.mp4" poster="img/food-1-poster.jpg" playsinline preload="metadata" data-work></video><span class="play" aria-hidden="true"></span></div><div class="vid reveal" data-cursor tabindex="0"><video src="video/food-2.mp4" poster="img/food-2-poster.jpg" playsinline preload="metadata" data-work></video><span class="play" aria-hidden="true"></span></div><div class="vid reveal" data-cursor tabindex="0"><video src="video/food-3.mp4" poster="img/food-3-poster.jpg" playsinline preload="metadata" data-work></video><span class="play" aria-hidden="true"></span></div></div>
-  </article>
+  </div>
+</section>
 
-  <article class="project p-c">
-    <figure class="big reveal"><img src="img/camry-wide.jpg" alt=""></figure>
-    <figure class="tall reveal"><img src="img/camry-door.jpg" alt=""></figure>
-    <div class="meta rv">
-      <span class="label idx">03 — Fotó</span>
-      <h3 class="pn" style="font-size:clamp(26px,2.4vw,38px)"><span class="ph">[[PROJECT NAME]]</span></h3>
-      <span class="label">Ügyfél</span><span>Xtravel</span><span class="label">Év</span><span>2026</span>
-    </div>
-  </article>
+<section class="photos">
+  <div class="ph-head rv">
+    <span class="label idx">03 — Fotó</span>
+    <h3 class="pn"><span class="ph">[[PROJECT NAME]]</span></h3>
+    <p class="label">Xtravel · 2026</p>
+  </div>
+  <div class="gal" id="gal"><figure class="g1"><img src="img/photo-1.jpg" alt="" loading="lazy" draggable="false"></figure><figure class="g2"><img src="img/photo-2.jpg" alt="" loading="lazy" draggable="false"></figure><figure class="g3"><img src="img/photo-3.jpg" alt="" loading="lazy" draggable="false"></figure><figure class="g4"><img src="img/photo-4.jpg" alt="" loading="lazy" draggable="false"></figure><figure class="g5"><img src="img/photo-5.jpg" alt="" loading="lazy" draggable="false"></figure><figure class="g6"><img src="img/photo-6.jpg" alt="" loading="lazy" draggable="false"></figure></div>
+  <p class="label gal-hint">Húzd oldalra →</p>
 </section>
 
 <section class="spread" id="rolunk">
   <div class="side reveal"><img class="bw" src="img/founder-portrait.jpg" alt=""></div>
   <div class="center">
-    <img src="logo/seven-monogram.svg" alt="">
-    <p class="label" style="margin-bottom:20px">Meet the founder</p>
+    <img class="m7" src="logo/seven-monogram.svg" alt="">
+    <p class="label">Meet the founder</p>
     <p class="name" data-split>Horváth Áron</p>
-    <blockquote class="rv"><span class="ph">[[ÍRD: founder pull quote · 1–2 sentences]]</span></blockquote>
+    <blockquote class="fq rv"><span class="qm o" aria-hidden="true">&ldquo;</span>Nagy feladat egy kis cégnek, de kis céllal nem éri meg elindulni.<span class="qm c" aria-hidden="true">&rdquo;</span></blockquote>
     <div class="polaroid drop"><img class="bw" src="img/bts-camry.jpg" alt=""></div>
   </div>
   <div class="side reveal"><img class="bw" src="img/founder-studio.jpg" alt=""></div>
 </section>
 
-<section class="sev rv">
-  <p class="acro"><b>S</b>ocials <b>E</b>valuation <small>by the</small> <b>V</b>anguard</p>
-  <p class="txt"><span class="ph">[[ÍRD: what SEV means to you · 1–2 sentences]]</span></p>
+<section class="sev">
+  <div class="rv">
+    <p class="label">What is SEV?</p>
+    <p class="acro" aria-label="Socials Evaluation by the Vanguard"><span><b>S</b>ocials</span><span><b>E</b>valuation</span><span class="by">by the</span><span><b>V</b>anguard</span></p>
+    <p class="local">Közösségi média értékelés az élvonalból</p>
+  </div>
+  <p class="txt rv"><span class="ph">[[ÍRD: what SEV means to you · 1–2 sentences]]</span></p>
 </section>
 
 <section class="testi" id="testi" tabindex="0" aria-roledescription="carousel" aria-label="Vélemények">
@@ -150,6 +166,15 @@
   <div class="steps"><div class="step rv"><span class="num">01</span><h3><span class="ph">[[ÍRD: step title]]</span></h3><p><span class="ph">[[ÍRD: 1 sentence]]</span></p></div><div class="step rv"><span class="num">02</span><h3><span class="ph">[[ÍRD: step title]]</span></h3><p><span class="ph">[[ÍRD: 1 sentence]]</span></p></div><div class="step rv"><span class="num">03</span><h3><span class="ph">[[ÍRD: step title]]</span></h3><p><span class="ph">[[ÍRD: 1 sentence]]</span></p></div><div class="step rv"><span class="num">04</span><h3><span class="ph">[[ÍRD: step title]]</span></h3><p><span class="ph">[[ÍRD: 1 sentence]]</span></p></div></div>
 </section>
 
+<section class="faq" id="gyik">
+  <div class="sec-head rv"><span class="label">No. 05 · GYIK</span><span class="label">01 — 05</span></div>
+    <details><summary><span class="num">01</span><span><span class="ph">[[ÍRD: question 1]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 1 · 2–4 sentences]]</span></div></details>
+    <details><summary><span class="num">02</span><span><span class="ph">[[ÍRD: question 2]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 2 · 2–4 sentences]]</span></div></details>
+    <details><summary><span class="num">03</span><span><span class="ph">[[ÍRD: question 3]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 3 · 2–4 sentences]]</span></div></details>
+    <details><summary><span class="num">04</span><span><span class="ph">[[ÍRD: question 4]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 4 · 2–4 sentences]]</span></div></details>
+    <details><summary><span class="num">05</span><span><span class="ph">[[ÍRD: question 5]]</span></span><i></i></summary><div class="ans"><span class="ph">[[ÍRD: answer 5 · 2–4 sentences]]</span></div></details>
+</section>
+
 <section class="cta">
   <h2 data-split><span class="ph">[[ÍRD: closing statement · 3–6 words]]</span></h2>
   <div class="side rv">
@@ -160,16 +185,19 @@
 </main>
 
 <footer id="footer">
-  <div class="lock"><a href="index.html"><img src="logo/seven-logo-lockup.svg" alt="Seven Marketing Agency"></a></div>
-  <p class="line"><span class="ph ph-light">[[ÍRD: footer line · max 10 words]]</span></p>
-  <nav class="label">
-    <a href="#szolg">Szolgáltatások</a><a href="#munkaink">Munkáink</a><a href="#rolunk">Rólunk</a><a href="kapcsolat/index.html">Kapcsolat</a>
-    <a href="https://www.instagram.com/sevmarketingagency/" target="_blank" rel="noopener">Instagram</a>
-  </nav>
-  <div class="bottom label">
-    <span>© 2026 Seven Marketing Agency. Minden jog fenntartva.</span>
-    <span class="legal"><a href="adatvedelem/index.html">Adatvédelmi tájékoztató</a><a href="impresszum/index.html">Impresszum</a><button type="button" id="cookieOpen">Süti-beállítások</button></span>
+  <div class="fcard">
+    <div class="ftop">
+      <a class="flogo" href="index.html"><img src="logo/seven-logo-lockup.svg" alt="Seven Marketing Agency"></a>
+      <p class="acro acro-sm" aria-label="Socials Evaluation by the Vanguard"><span><b>S</b>ocials</span><span><b>E</b>valuation</span><span class="by">by the</span><span><b>V</b>anguard</span></p>
+      <a class="btn btn-light" href="kapcsolat/index.html#ajanlat">Ajánlatot kérek <span>→</span></a>
+    </div>
+    <div class="fcols">
+      <div><h3 class="label">Felfedezés</h3><a href="#szolg">Szolgáltatások</a><a href="#munkaink">Munkáink</a><a href="#rolunk">Rólunk</a><a href="kapcsolat/index.html">Kapcsolat</a></div>
+      <div><h3 class="label">Kapcsolat</h3><a href="mailto:hello@7sma.hu">hello@7sma.hu</a><a href="tel:+36707784758">+36 70 778 4758</a><a href="https://www.instagram.com/sevmarketingagency/" target="_blank" rel="noopener">@sevmarketingagency</a></div>
+      <div><h3 class="label">Dokumentumok</h3><a href="adatvedelem/index.html">Adatvédelmi tájékoztató</a><a href="impresszum/index.html">Impresszum</a><button type="button" id="cookieOpen">Süti-beállítások</button></div>
+    </div>
   </div>
+  <p class="fbottom label">© 2026 Seven Marketing Agency. Minden jog fenntartva.</p>
 </footer>
 
 <div class="cookie" id="cookie" role="dialog" aria-modal="false" aria-labelledby="ckTitle">
@@ -193,6 +221,6 @@
   </div>
 </div>
 
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v=7e"></script>
 </body>
 </html>

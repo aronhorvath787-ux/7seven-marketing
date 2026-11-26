@@ -14,33 +14,40 @@ $$('[data-split]').forEach(el => {
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -6% 0px' });
 $$('.rv,.reveal,.drop,[data-split],.sec-head').forEach(el => io.observe(el));
 
-// ---- header: smooth hide on scroll down, show on scroll up ----
+// ---- header: slides away on scroll down, back on scroll up ----
+// Over the film it stays transparent with white text; past the film it is solid ivory.
 const frame = $('#frame'), hero = $('#hero');
 let lastY = scrollY, travel = 0, ticking = false;
 function updateHeader() {
-  const y = scrollY, dy = y - lastY;
-  // transparent with white text only at the very top of the home page (over the film);
-  // whenever the header comes back further down it is solid ivory with black text
-  const atTop = !!hero && y < 40;
-  frame.classList.toggle('on-hero', atTop);
-  frame.classList.toggle('solid', !atTop);
-  // hide after 80px of continuous downward scroll, show again after 30px upward
+  const y = Math.max(0, scrollY), dy = y - lastY, h = frame.offsetHeight;
   if (dy !== 0) travel = (Math.sign(dy) === Math.sign(travel)) ? travel + dy : dy;
-  if (y < 80) frame.classList.remove('away');
-  else if (travel > 80) frame.classList.add('away');
-  else if (travel < -30) frame.classList.remove('away');
-  if (hero && !reduce) hero.style.setProperty('--hp', Math.min(1, y / hero.offsetHeight).toFixed(3));
+  let away = frame.classList.contains('away');
+  if (y < h) away = false;
+  else if (travel > 24) away = true;
+  else if (travel < -24) away = false;
+  frame.classList.toggle('away', away);
+  if (hero) {
+    const overHero = y < hero.offsetHeight - h;
+    frame.classList.toggle('on-hero', overHero);
+    frame.classList.toggle('solid', !overHero);
+    if (!reduce) hero.style.setProperty('--hp', Math.min(1, y / hero.offsetHeight).toFixed(3));
+  }
   lastY = y; ticking = false;
 }
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(updateHeader); } }, { passive: true });
 updateHeader();
 
 // ---- mobile menu ----
-const mnav = $('#mnav');
+const mnav = $('#mnav'), menuBtn = $('#menuBtn');
 if (mnav) {
-  const open = o => { mnav.classList.toggle('open', o); document.body.classList.toggle('menu-open', o); };
-  $('#menuBtn').onclick = () => open(true);
+  const open = o => {
+    mnav.classList.toggle('open', o); document.body.classList.toggle('menu-open', o);
+    menuBtn.setAttribute('aria-expanded', String(o));
+    if (!o && mnav.contains(document.activeElement)) menuBtn.focus({ preventScroll: true });
+  };
+  menuBtn.onclick = () => open(true);
   $('#menuClose').onclick = () => open(false);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && mnav.classList.contains('open')) open(false); });
   $$('a', mnav).forEach(a => a.addEventListener('click', () => open(false)));
 }
 
@@ -71,6 +78,49 @@ $$('[data-cursor]').forEach(box => {
 const vio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) e.target.pause(); }), { threshold: .1 });
 works.forEach(v => vio.observe(v));
 if (cur) addEventListener('mousemove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; }, { passive: true });
+
+// ---- reels carousel: active reel centred in a phone frame, neighbours peek; swipe, arrows, dots ----
+const rc = $('#reels');
+if (rc) {
+  const cards = $$('.rc-card', rc), rdots = $$('#rDots button'), n = cards.length;
+  let i = 0, sx = null, ddx = 0, wheelLock = false;
+  const place = (drag = 0) => cards.forEach((c, k) => {
+    let d = ((k - i) % n + n) % n; if (d > n / 2) d -= n;           // -1, 0, 1
+    const f = d + drag, a = Math.min(1, Math.abs(f));
+    c.style.setProperty('--d', f.toFixed(3));
+    c.style.setProperty('--s', (1 - a * .16).toFixed(3));
+    c.style.setProperty('--o', (1 - a * .6).toFixed(3));
+    c.style.setProperty('--z', String(10 - Math.round(Math.abs(f) * 2)));
+    c.classList.toggle('on', d === 0);
+  });
+  const go = k => {
+    i = (k + n) % n; works.forEach(v => v.pause());
+    rdots.forEach((b, j) => b.classList.toggle('on', j === i)); place();
+  };
+  rdots.forEach((b, j) => b.onclick = () => go(j));
+  $$('[data-r]', rc).forEach(b => b.onclick = () => go(i + +b.dataset.r));
+  cards.forEach((c, k) => c.addEventListener('click', () => { if (k !== i) go(k); }));
+  rc.addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(i + 1); if (e.key === 'ArrowLeft') go(i - 1); });
+  const stage = $('.rc-stage', rc);
+  stage.addEventListener('pointerdown', e => { sx = e.clientX; ddx = 0; });
+  stage.addEventListener('pointermove', e => {
+    if (sx === null) return; ddx = e.clientX - sx;
+    if (Math.abs(ddx) > 6) { rc.classList.add('dragging'); place(ddx / (stage.offsetHeight * .5)); }
+  });
+  const end = () => {
+    if (sx === null) return; sx = null; rc.classList.remove('dragging');
+    if (Math.abs(ddx) > 50) go(i + (ddx < 0 ? 1 : -1)); else place();
+  };
+  stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end); stage.addEventListener('pointerleave', end);
+  // the click that ends a drag must not start a video or switch cards
+  stage.addEventListener('click', e => { if (Math.abs(ddx) > 6) { e.stopPropagation(); e.preventDefault(); } ddx = 0; }, true);
+  rc.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault(); if (wheelLock || Math.abs(e.deltaX) < 25) return;
+    go(i + (e.deltaX > 0 ? 1 : -1)); wheelLock = true; setTimeout(() => wheelLock = false, 650);
+  }, { passive: false });
+  place();
+}
 
 // ---- testimonials: trackpad swipe, touch/mouse drag, arrow keys, dots ----
 const testi = $('#testi');
