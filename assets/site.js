@@ -114,6 +114,7 @@ if (rc) {
   const go = k => {
     i = (k + n) % n; works.forEach(v => v.pause());
     rdots.forEach((b, j) => b.classList.toggle('on', j === i)); place();
+    const rn = $('#rNum'); if (rn) rn.textContent = String(i + 1).padStart(2, '0');
   };
   rdots.forEach((b, j) => b.onclick = () => go(j));
   $$('[data-r]', rc).forEach(b => b.onclick = () => go(i + +b.dataset.r));
