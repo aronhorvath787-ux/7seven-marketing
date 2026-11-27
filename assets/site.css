@@ -554,3 +554,13 @@ section[id]{scroll-margin-top:70px}
   .sev .local{max-width:none}
   .sev p.txt{margin:0 auto}
 }
+
+
+/* ===== v10 ===== */
+/* founder on mobile: 7 + label sit a little higher */
+@media (max-width:820px){.spread .center{padding-top:58px}}
+/* real copy: long service names and closing statement */
+.svc h3{overflow-wrap:break-word;hyphens:auto}
+.cta h2{text-transform:none;font-size:clamp(30px,3.7vw,62px);line-height:1.12}
+.sev p.txt q{font-family:var(--display);font-style:italic;font-size:clamp(20px,2vw,30px);line-height:1.35;quotes:"\201C" "\201D"}
+.faq .ans{line-height:1.6}
