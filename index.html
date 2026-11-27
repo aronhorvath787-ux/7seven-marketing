@@ -10,11 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Open+Sans:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=10b">
+<link rel="stylesheet" href="assets/site.css?v=11">
 <link rel="alternate" hreflang="hu" href="index.html"><link rel="alternate" hreflang="en" href="en/index.html">
 </head>
 <body>
-<div class="sample-badge" id="badge">Design sample v10 · placeholder text</div>
+<div class="sample-badge" id="badge">Design sample v11 · placeholder text</div>
 
 <header class="frame" id="frame">
   <a class="brand" href="index.html" aria-label="Seven Marketing Agency – kezdőlap"><img src="logo/seven-monogram.svg" alt=""><span class="label">Seven Marketing Agency</span></a>
@@ -66,11 +66,11 @@
 <section class="services" id="szolg">
   <div class="sec-head rv"><span class="label">No. 02 · Szolgáltatások</span><span class="label">01 — 03</span></div>
   <div class="svc rv"><span class="num">01</span><h3>Teljes körű social media tartalomgyártás</h3><p>Segítünk, hogy céged saját üzenetét képviselhesse, és saját arcát mutathassa, ezért előre elemezzük cégedet és stratégiát készítünk, majd a teljes tartalomgyártás folyamatát levezényeljük.</p>
-    <div class="polaroid"><img src="img/ets-still.jpg" alt=""></div></div>
-  <div class="svc rv"><span class="num">02</span><h3>Reklámvideó-készítés</h3><p>Nem csak 20–30 másodperces short form videókat gyártunk: ha cégednek interjúra, reklámfilmre vagy hosszabb videókra van szüksége, a SEV ebben is segít.</p>
-    <div class="polaroid"><img src="img/food-1-poster.jpg" alt=""></div></div>
+    <div class="polaroid"><img src="img/svc-content.jpg" alt=""></div></div>
+  <div class="svc rv" data-vbox="vbox" role="button" tabindex="0" aria-label="Videó lejátszása"><span class="num">02</span><h3>Reklámvideó-készítés</h3><p>Nem csak 20–30 másodperces short form videókat gyártunk: ha cégednek interjúra, reklámfilmre vagy hosszabb videókra van szüksége, a SEV ebben is segít.<span class="svc-play label"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg>Videó lejátszása</span></p>
+    <div class="polaroid"><img src="img/food-1-poster.jpg" alt=""><span class="pol-play" aria-hidden="true"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></div></div>
   <div class="svc rv"><span class="num">03</span><h3>Social media management</h3><p>Teljes körű social media managementet is vállalunk, ezzel levéve a terhet az ügyfelek válláról. Segítünk kitűnni a zajból és valós üzenetet, értéket közvetíteni, időt és energiát spórolni.</p>
-    <div class="polaroid"><img src="img/camry-detail.jpg" alt=""></div></div>
+    <div class="polaroid"><img src="img/svc-management.jpg" alt=""></div></div>
 </section>
 
 <section class="work" id="munkaink">
@@ -179,6 +179,10 @@
   </div>
 </section>
 </main>
+<div class="vbox" id="vbox" hidden>
+  <button type="button" class="vbox-x label" data-vclose>Bezárás <i aria-hidden="true"></i></button>
+  <div class="vbox-in vid player"><video src="video/food-1.mp4" poster="img/food-1-poster.jpg" playsinline preload="none" data-work></video><button type="button" class="play" aria-label="Lejátszás / szünet"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg></button><div class="ctl"><button type="button" class="c-play" aria-label="Lejátszás / szünet"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="5.5" width="3.4" height="13" rx="1"/><rect x="13.6" y="5.5" width="3.4" height="13" rx="1"/></svg></button><span class="c-time">0:00</span><input class="c-seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Videó pozíció"><button type="button" class="c-mute" aria-label="Hang be/ki"><svg class="i-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11"/></svg><svg class="i-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M16 10l4 4M20 10l-4 4"/></svg></button><button type="button" class="c-fs" aria-label="Teljes képernyő"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div></div>
+</div>
 
 <footer id="footer">
   <div class="fcard">
@@ -217,6 +221,6 @@
   </div>
 </div>
 
-<script src="assets/site.js?v=10b"></script>
+<script src="assets/site.js?v=11"></script>
 </body>
 </html>

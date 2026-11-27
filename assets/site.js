@@ -97,6 +97,24 @@ $$('.player').forEach(box => {
 const vio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !document.fullscreenElement) e.target.pause(); }), { threshold: .1 });
 works.forEach(v => vio.observe(v));
 
+// ---- service video lightbox ----
+const vbox = $('#vbox');
+if (vbox) {
+  const vv = $('video', vbox);
+  const show = o => {
+    if (o) { vbox.hidden = false; requestAnimationFrame(() => vbox.classList.add('open')); vv.muted = false; $('.play', vbox).click(); }
+    else { vv.pause(); vbox.classList.remove('open'); setTimeout(() => { vbox.hidden = true; }, 350); }
+    document.body.classList.toggle('vbox-open', o);
+  };
+  $$('[data-vbox]').forEach(el => {
+    el.addEventListener('click', () => show(true));
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(true); } });
+  });
+  $('[data-vclose]', vbox).addEventListener('click', () => show(false));
+  vbox.addEventListener('click', e => { if (e.target === vbox) show(false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !vbox.hidden) show(false); });
+}
+
 // ---- reels carousel: active reel centred in a phone frame, neighbours peek; swipe, arrows, dots ----
 const rc = $('#reels');
 if (rc) {

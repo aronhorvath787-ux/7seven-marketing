@@ -10,11 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Open+Sans:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=10b">
+<link rel="stylesheet" href="../assets/site.css?v=11">
 <link rel="alternate" hreflang="hu" href="../index.html"><link rel="alternate" hreflang="en" href="../en/index.html">
 </head>
 <body>
-<div class="sample-badge" id="badge">Design sample v10 · placeholder text</div>
+<div class="sample-badge" id="badge">Design sample v11 · placeholder text</div>
 
 <header class="frame" id="frame">
   <a class="brand" href="../en/index.html" aria-label="Seven Marketing Agency – home"><img src="../logo/seven-monogram.svg" alt=""><span class="label">Seven Marketing Agency</span></a>
@@ -66,11 +66,11 @@
 <section class="services" id="szolg">
   <div class="sec-head rv"><span class="label">No. 02 · Services</span><span class="label">01 — 03</span></div>
   <div class="svc rv"><span class="num">01</span><h3>Full-service social media content production</h3><p>We help your company carry its own message and show its own face. That's why we analyse your business and build a strategy first, then run the entire content production process.</p>
-    <div class="polaroid"><img src="../img/ets-still.jpg" alt=""></div></div>
-  <div class="svc rv"><span class="num">02</span><h3>Commercial video production</h3><p>We don't just make 20–30-second short-form videos: if your company needs an interview, a commercial or longer videos, SEV can help with that too.</p>
-    <div class="polaroid"><img src="../img/food-1-poster.jpg" alt=""></div></div>
+    <div class="polaroid"><img src="../img/svc-content.jpg" alt=""></div></div>
+  <div class="svc rv" data-vbox="vbox" role="button" tabindex="0" aria-label="Play the video"><span class="num">02</span><h3>Commercial video production</h3><p>We don't just make 20–30-second short-form videos: if your company needs an interview, a commercial or longer videos, SEV can help with that too.<span class="svc-play label"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg>Play the video</span></p>
+    <div class="polaroid"><img src="../img/food-1-poster.jpg" alt=""><span class="pol-play" aria-hidden="true"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></div></div>
   <div class="svc rv"><span class="num">03</span><h3>Social media management</h3><p>We also offer full social media management, taking the load off our clients' shoulders. We help you stand out from the noise, communicate a real message and real value, and save time and energy.</p>
-    <div class="polaroid"><img src="../img/camry-detail.jpg" alt=""></div></div>
+    <div class="polaroid"><img src="../img/svc-management.jpg" alt=""></div></div>
 </section>
 
 <section class="work" id="munkaink">
@@ -179,6 +179,10 @@
   </div>
 </section>
 </main>
+<div class="vbox" id="vbox" hidden>
+  <button type="button" class="vbox-x label" data-vclose>Close <i aria-hidden="true"></i></button>
+  <div class="vbox-in vid player"><video src="../video/food-1.mp4" poster="../img/food-1-poster.jpg" playsinline preload="none" data-work></video><button type="button" class="play" aria-label="Play / pause"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg></button><div class="ctl"><button type="button" class="c-play" aria-label="Play / pause"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="5.5" width="3.4" height="13" rx="1"/><rect x="13.6" y="5.5" width="3.4" height="13" rx="1"/></svg></button><span class="c-time">0:00</span><input class="c-seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Video position"><button type="button" class="c-mute" aria-label="Sound on/off"><svg class="i-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11"/></svg><svg class="i-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M16 10l4 4M20 10l-4 4"/></svg></button><button type="button" class="c-fs" aria-label="Full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div></div>
+</div>
 
 <footer id="footer">
   <div class="fcard">
@@ -217,6 +221,6 @@
   </div>
 </div>
 
-<script src="../assets/site.js?v=10b"></script>
+<script src="../assets/site.js?v=11"></script>
 </body>
 </html>
